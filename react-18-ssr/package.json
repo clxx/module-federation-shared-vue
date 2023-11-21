@@ -1,9 +1,0 @@
-{
-  "name": "react-ssr",
-  "private": true,
-  "version": "1.0.0",
-  "scripts": {
-    "start": "pnpm --parallel --filter react-ssr_* start",
-    "build": "pnpm --parallel --filter react-ssr_* build"
-  }
-}
