@@ -1,12 +1,14 @@
 <template>
-  <div style="color: red;">{{ title }}</div>
+  <p id="remoteVersion" style="color: red;">remoteVersion: {{ version }}</p>
+  <p id="sameInstance">sameInstance: {{ sameInstance }}</p>
 </template>
-<script>
-export default {
-  data() {
-    return {
-      title: "Remote Component in Action..",
-    };
-  },
-};
+
+<script setup>
+import { createApp, version } from 'vue';
+
+if (!window.layoutCreateApp) {
+  throw "No layoutCreateApp!";
+}
+
+const sameInstance = createApp === window.layoutCreateApp;
 </script>

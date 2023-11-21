@@ -1,3 +1,4 @@
+const { shared } = require('./shared');
 const path = require('path');
 const { VueLoaderPlugin } = require('vue-loader');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -61,11 +62,7 @@ module.exports = (env = {}) => ({
         './Content': './src/components/Content',
         './Button': './src/components/Button',
       },
-      shared: {
-        vue: {
-          singleton: true,
-        },
-      },
+      shared
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './index.html'),
