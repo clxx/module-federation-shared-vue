@@ -1,4 +1,4 @@
-const { shared } = require('./shared');
+const  shared  = require('./shared.json');
 const path = require('path');
 const { VueLoaderPlugin } = require('vue-loader');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
