@@ -1,6 +1,6 @@
 <template>
-  <p id="remoteVersion" style="color: red;">remoteVersion: {{ version }}</p>
-  <p id="sameInstance">sameInstance: {{ sameInstance }}</p>
+  <p id="remoteVersion" style="color: red;">{{ version }}</p>
+  <p id="sameInstance">{{ sameInstance }}</p>
 </template>
 
 <script setup>

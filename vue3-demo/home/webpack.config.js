@@ -60,7 +60,6 @@ module.exports = (env = {}) => ({
       },
       exposes: {
         './Content': './src/components/Content',
-        './Button': './src/components/Button',
       },
       shared
     }),

@@ -6,7 +6,7 @@
     </div>
     <img src="./logo.png" width="30" />
     <h1>Layout App 1</h1>
-    <p id="hostVersion" style="color: green;">hostVersion: {{ version }}</p>
+    <p id="hostVersion" style="color: green;">{{ version }}</p>
     <div class="remote-component">
       <!-- remote-component REMOTE -->
       <div class="app-label">
@@ -18,9 +18,13 @@
 </template>
 
 <script setup>
-import { createApp, version } from 'vue';
+import { createApp, onMounted, version } from 'vue';
 
 window.layoutCreateApp = createApp;
+
+onMounted(() => {
+  console.warn('mounted');
+})
 </script>
 
 <style scoped>
