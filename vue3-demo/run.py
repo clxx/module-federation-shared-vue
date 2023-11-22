@@ -31,6 +31,7 @@ def start(host_vue_version, remote_vue_version, host_shared, remote_shared):
     host_package_json_text = host_package_json.read_text("utf-8")
     host_package_json_data = json.loads(host_package_json_text)
     host_package_json_data["dependencies"]["vue"] = host_vue_version
+    host_package_json_data["devDependencies"]["@vue/compiler-sfc"] = host_vue_version
     host_package_json.write_text(
         json.dumps(host_package_json_data, indent=2) + "\n", "utf-8"
     )
@@ -39,6 +40,7 @@ def start(host_vue_version, remote_vue_version, host_shared, remote_shared):
     remote_package_json_text = remote_package_json.read_text("utf-8")
     remote_package_json_data = json.loads(remote_package_json_text)
     remote_package_json_data["dependencies"]["vue"] = remote_vue_version
+    remote_package_json_data["devDependencies"]["@vue/compiler-sfc"] = remote_vue_version
     remote_package_json.write_text(
         json.dumps(remote_package_json_data, indent=2) + "\n", "utf-8"
     )
@@ -52,7 +54,7 @@ def start(host_vue_version, remote_vue_version, host_shared, remote_shared):
     remote_shared_json.write_text(json.dumps(remote_shared, indent=2), "utf-8")
 
     try:
-        subprocess.run("pnpm i", shell=True)
+        subprocess.run("pnpm install", shell=True)
 
         with subprocess.Popen(
             "pnpm start",
