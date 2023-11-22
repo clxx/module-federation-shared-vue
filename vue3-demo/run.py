@@ -23,10 +23,10 @@ def scrape(url):
         messages = page.locator("p.warnings").all_inner_texts()
         browser.close()
         return {
+            "messages": messages,
             "host": host_version,
             "remote": remote_version,
             "singleton": json.loads(same_instance),
-            "messages": messages,
         }
 
 
