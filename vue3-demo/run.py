@@ -120,6 +120,7 @@ count = 0
 
 results = []
 
+# https://webpack.js.org/plugins/module-federation-plugin/#sharing-hints
 for host_package_version in ["^3.3.8", "^3.0.11"]:
     for remote_package_version in ["^3.3.8", "^3.0.11"]:
         if host_package_version == remote_package_version:
@@ -137,7 +138,9 @@ for host_package_version in ["^3.3.8", "^3.0.11"]:
             ),
         ]:
             for is_strict_version in [None, False, True]:
-                if is_strict_version is not None and host_vue_shared is None:
+                if is_strict_version is not None and (
+                    host_vue_shared is None or "requiredVersion" not in host_vue_shared
+                ):
                     continue
                 for is_singleton in [None, False, True]:
                     if is_singleton is not None and host_vue_shared is None:
@@ -182,7 +185,6 @@ for host_package_version in ["^3.3.8", "^3.0.11"]:
                         )
                         count += 1
                         print(
-                            "Test",
                             count,
                             host_package_version,
                             remote_package_version,
