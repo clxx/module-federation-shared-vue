@@ -25,7 +25,7 @@ def scrape(url):
         return {
             "host": host_version,
             "remote": remote_version,
-            "instance": "same" if same_instance == "true" else "different",
+            "singleton": json.loads(same_instance),
             "messages": messages,
         }
 
