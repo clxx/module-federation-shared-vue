@@ -60,57 +60,67 @@ for home_vue_version in ["^3.3.8", "^3.0.11"]:
     for layout_vue_version in ["^3.3.8", "^3.0.11"]:
         if home_vue_version == layout_vue_version:
             continue
-        for home_shared, layout_shared in [
+        for home_vue_shared, layout_vue_shared in [
+            (None, None),
             ({}, {}),
-            ({"vue": {}}, {"vue": {}}),
             (
-                {"vue": {"version": home_vue_version}},
-                {"vue": {"version": layout_vue_version}},
+                {"version": home_vue_version},
+                {"version": layout_vue_version},
             ),
             (
-                {"vue": {"requiredVersion": home_vue_version}},
-                {"vue": {"requiredVersion": layout_vue_version}},
+                {"requiredVersion": home_vue_version},
+                {"requiredVersion": layout_vue_version},
             ),
         ]:
             for is_strict_version in [None, False, True]:
-                if is_strict_version is not None and "vue" not in home_shared:
+                if is_strict_version is not None and home_vue_shared is None:
                     continue
                 for is_singleton in [None, False, True]:
-                    if is_singleton is not None and "vue" not in home_shared:
+                    if is_singleton is not None and home_vue_shared is None:
                         continue
                     for is_import in [None, False, True]:
-                        if is_import is not None and "vue" not in home_shared:
+                        if is_import is not None and home_vue_shared is None:
                             continue
                         count += 1
-                        if "vue" in home_shared:
-                            home_shared["vue"] = {
-                                key: value
-                                for key, value in (
-                                    home_shared["vue"]
-                                    | {
-                                        "strictVersion": is_strict_version,
-                                        "singleton": is_singleton,
-                                        "import": is_import,
-                                    }
-                                ).items()
-                                if value is not None
+                        home_shared = (
+                            {
+                                "vue": {
+                                    key: value
+                                    for key, value in (
+                                        home_vue_shared
+                                        | {
+                                            "strictVersion": is_strict_version,
+                                            "singleton": is_singleton,
+                                            "import": is_import,
+                                        }
+                                    ).items()
+                                    if value is not None
+                                }
                             }
-                        if "vue" in layout_shared:
-                            layout_shared["vue"] = {
-                                key: value
-                                for key, value in (
-                                    layout_shared["vue"]
-                                    | {
-                                        "strictVersion": is_strict_version,
-                                        "singleton": is_singleton,
-                                    }
-                                ).items()
-                                if value is not None
+                            if home_vue_shared is not None
+                            else {}
+                        )
+                        layout_shared = (
+                            {
+                                "vue": {
+                                    key: value
+                                    for key, value in (
+                                        layout_vue_shared
+                                        | {
+                                            "strictVersion": is_strict_version,
+                                            "singleton": is_singleton,
+                                        }
+                                    ).items()
+                                    if value is not None
+                                }
                             }
+                            if layout_vue_shared is not None
+                            else {}
+                        )
                         print(
                             count,
                             home_vue_version,
                             layout_vue_version,
-                            json.dumps(home_shared),
-                            json.dumps(layout_shared),
+                            home_shared,
+                            layout_shared,
                         )
