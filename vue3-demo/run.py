@@ -24,7 +24,7 @@ def scrape(url):
 
 
 def start(home_vue_version, layout_vue_version, home_shared, layout_shared):
-    pnpm_lock_yaml = Path("pnpm-lock.yaml")
+    pnpm_lock_yaml = Path("..", "pnpm-lock.yaml")
     pnpm_lock_yaml_bytes = pnpm_lock_yaml.read_bytes()
 
     home_package_json = Path("home", "package.json")
@@ -45,11 +45,11 @@ def start(home_vue_version, layout_vue_version, home_shared, layout_shared):
 
     home_shared_json = Path("home", "shared.json")
     home_shared_json_text = home_shared_json.read_text("utf-8")
-    home_shared_json.write_text(json.dumps(home_shared), "utf-8")
+    home_shared_json.write_text(json.dumps(home_shared, indent=2), "utf-8")
 
     layout_shared_json = Path("layout", "shared.json")
     layout_shared_json_text = layout_shared_json.read_text("utf-8")
-    layout_shared_json.write_text(json.dumps(layout_shared), "utf-8")
+    layout_shared_json.write_text(json.dumps(layout_shared, indent=2), "utf-8")
 
     try:
         subprocess.run("pnpm install", shell=True)
