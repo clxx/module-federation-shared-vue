@@ -2,6 +2,7 @@ import json
 import re
 import subprocess
 
+from pathlib import Path
 from playwright.sync_api import expect, sync_playwright
 
 
@@ -22,40 +23,67 @@ def scrape(url):
 
 
 def start(home_vue_version, layout_vue_version, home_shared, layout_shared):
-    subprocess.run("pnpm install", shell=True)
+    home_package_json = Path("home", "package.json")
+    home_package_json_text = home_package_json.read_text("utf-8")
+    home_package_json_data = json.loads(home_package_json_text)
+    home_package_json_data["dependencies"]["vue"] = home_vue_version
+    home_package_json.write_text(json.dumps(layout_package_json_data), "utf-8")
 
-    with subprocess.Popen(
-        "pnpm start",
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        shell=True,
-        encoding="utf-8",
-    ) as proc:
-        home = False
-        layout = False
-        url = ""
-        while line := proc.stdout.readline():
-            line = line.strip()
-            if match := re.fullmatch(
-                r"layout start: <i> \[webpack-dev-server\] Loopback: (.+)", line
-            ):
-                url = match.group(1)
-            elif match := re.fullmatch(
-                r"(home|layout) start: webpack \d+\.\d+\.\d+ compiled successfully in \d+ ms",
-                line,
-            ):
-                if match.group(1) == "home":
-                    home = True
-                elif match.group(1) == "layout":
-                    layout = True
-            if home and layout and url:
-                break
-        result = scrape(url)
-        print(result)
-        proc.terminate()
+    layout_package_json = Path("layout", "package.json")
+    layout_package_json_text = layout_package_json.read_text("utf-8")
+    layout_package_json_data = json.loads(layout_package_json_text)
+    layout_package_json_data["dependencies"]["vue"] = layout_vue_version
+    layout_package_json.write_text(json.dumps(layout_package_json_data), "utf-8")
+
+    home_shared_json = Path("home", "shared.json")
+    home_shared_json_text = home_shared_json.read_text("utf-8")
+    home_shared_json.write_text(json.dumps(home_shared), "utf-8")
+
+    layout_shared_json = Path("layout", "shared.json")
+    layout_shared_json_text = layout_shared_json.read_text("utf-8")
+    layout_shared_json.write_text(json.dumps(layout_shared), "utf-8")
+
+    try:
+        subprocess.run("pnpm install", shell=True)
+
+        with subprocess.Popen(
+            "pnpm start",
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            shell=True,
+            encoding="utf-8",
+        ) as proc:
+            home = False
+            layout = False
+            url = ""
+            while line := proc.stdout.readline():
+                line = line.strip()
+                if match := re.fullmatch(
+                    r"layout start: <i> \[webpack-dev-server\] Loopback: (.+)", line
+                ):
+                    url = match.group(1)
+                elif match := re.fullmatch(
+                    r"(home|layout) start: webpack \d+\.\d+\.\d+ compiled successfully in \d+ ms",
+                    line,
+                ):
+                    if match.group(1) == "home":
+                        home = True
+                    elif match.group(1) == "layout":
+                        layout = True
+                if home and layout and url:
+                    break
+            result = scrape(url)
+            print(
+                home_vue_version, layout_vue_version, home_shared, layout_shared, result
+            )
+            proc.terminate()
+    finally:
+        home_package_json.write_text(home_package_json_text, "utf-8")
+        layout_package_json.write_text(layout_package_json_text, "utf-8")
+        home_shared_json.write_text(home_shared_json_text, "utf-8")
+        layout_shared_json.write_text(layout_shared_json_text, "utf-8")
 
 
-count = 0
 for home_vue_version in ["^3.3.8", "^3.0.11"]:
     for layout_vue_version in ["^3.3.8", "^3.0.11"]:
         if home_vue_version == layout_vue_version:
@@ -81,7 +109,6 @@ for home_vue_version in ["^3.3.8", "^3.0.11"]:
                     for is_import in [None, False, True]:
                         if is_import is not None and home_vue_shared is None:
                             continue
-                        count += 1
                         home_shared = (
                             {
                                 "vue": {
@@ -117,8 +144,7 @@ for home_vue_version in ["^3.3.8", "^3.0.11"]:
                             if layout_vue_shared is not None
                             else {}
                         )
-                        print(
-                            count,
+                        start(
                             home_vue_version,
                             layout_vue_version,
                             home_shared,
