@@ -210,4 +210,4 @@ for host_package_version in ["^3.3.8", "^3.0.11"]:
                         )
 
 results_json = Path("results.json")
-results_json.write_text(json.dumps(natsorted(results), indent=2), "utf-8")
+results_json.write_text(json.dumps(natsorted(results, json.dumps), indent=2), "utf-8")
