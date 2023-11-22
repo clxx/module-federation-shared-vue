@@ -2,6 +2,7 @@ import json
 import re
 import subprocess
 
+from natsort import natsorted
 from pathlib import Path
 from playwright.sync_api import expect, sync_playwright
 
@@ -16,20 +17,22 @@ def scrape(url):
         page.get_by_text("remote mounted", exact=True).wait_for()
         expect(page.locator("p.errors")).to_have_count(0)
         page.screenshot(path="screenshot.png")
-        hostVersion = page.locator("#hostVersion").inner_text()
-        remoteVersion = page.locator("#remoteVersion").inner_text()
-        sameInstance = page.locator("#sameInstance").inner_text()
+        host_version = page.locator("#hostVersion").inner_text()
+        remote_version = page.locator("#remoteVersion").inner_text()
+        same_instance = page.locator("#sameInstance").inner_text()
         messages = page.locator("p.warnings").all_inner_texts()
         browser.close()
         return {
-            "hostVersion": hostVersion,
-            "remoteVersion": remoteVersion,
-            "sameInstance": json.loads(sameInstance),
+            "host": host_version,
+            "remote": remote_version,
+            "instance": "same" if same_instance == "true" else "different",
             "messages": messages,
         }
 
 
-def start(host_package_version, remote_package_version, host_shared, remote_shared):
+def start(
+    host_package_version, remote_package_version, host_shared_hints, remote_shared_hints
+):
     pnpm_lock_yaml = Path("..", "pnpm-lock.yaml")
     pnpm_lock_yaml_bytes = pnpm_lock_yaml.read_bytes()
 
@@ -57,11 +60,11 @@ def start(host_package_version, remote_package_version, host_shared, remote_shar
 
     host_shared_json = Path("layout", "shared.json")
     host_shared_json_text = host_shared_json.read_text("utf-8")
-    host_shared_json.write_text(json.dumps(host_shared, indent=2), "utf-8")
+    host_shared_json.write_text(json.dumps(host_shared_hints, indent=2), "utf-8")
 
     remote_shared_json = Path("home", "shared.json")
     remote_shared_json_text = remote_shared_json.read_text("utf-8")
-    remote_shared_json.write_text(json.dumps(remote_shared, indent=2), "utf-8")
+    remote_shared_json.write_text(json.dumps(remote_shared_hints, indent=2), "utf-8")
 
     result = None
 
@@ -96,11 +99,17 @@ def start(host_package_version, remote_package_version, host_shared, remote_shar
                         remote = True
                 if host and remote and url:
                     result = {
-                        "scraped": scrape(url),
-                        "hostPackage": host_package_version,
-                        "remotePackage": remote_package_version,
-                        "hostWebpackSharedHints": host_shared,
-                        "remoteWebpackSharedHints": remote_shared,
+                        "actual": scrape(url),
+                        "config": {
+                            "host": {
+                                "package": host_package_version,
+                                "shared": host_shared_hints,
+                            },
+                            "remote": {
+                                "package": remote_package_version,
+                                "shared": remote_shared_hints,
+                            },
+                        },
                     }
                     break
             if not result:
@@ -200,7 +209,5 @@ for host_package_version in ["^3.3.8", "^3.0.11"]:
                             )
                         )
 
-results.sort(key=json.dumps)
-
 results_json = Path("results.json")
-results_json.write_text(json.dumps(results, indent=2), "utf-8")
+results_json.write_text(json.dumps(natsorted(results), indent=2), "utf-8")
