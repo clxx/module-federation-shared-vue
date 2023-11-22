@@ -4,11 +4,15 @@
 </template>
 
 <script setup>
-import { createApp, version } from 'vue';
+import { createApp, onMounted, version } from 'vue';
 
 if (!window.layoutCreateApp) {
   throw "No layoutCreateApp!";
 }
 
 const sameInstance = createApp === window.layoutCreateApp;
+
+onMounted(() => {
+  console.log('remote mounted');
+})
 </script>

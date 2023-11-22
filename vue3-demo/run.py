@@ -12,13 +12,14 @@ def scrape(url):
         browser = p.chromium.launch()
         page = browser.new_page()
         page.goto(url)
-        page.get_by_text("mounted", exact=True).wait_for()
+        page.get_by_text("host mounted", exact=True).wait_for()
+        page.get_by_text("remote mounted", exact=True).wait_for()
         expect(page.locator("p.errors")).to_have_count(0)
         page.screenshot(path="screenshot.png")
         hostVersion = page.locator("#hostVersion").inner_text()
         remoteVersion = page.locator("#remoteVersion").inner_text()
         sameInstance = page.locator("#sameInstance").inner_text()
-        messages = page.locator("p.warnings, p.errors").all_inner_texts()
+        messages = page.locator("p.warnings").all_inner_texts()
         browser.close()
         return {
             "hostVersion": hostVersion,
