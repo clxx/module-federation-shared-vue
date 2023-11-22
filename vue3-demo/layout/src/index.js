@@ -1,3 +1,12 @@
+const log = console.log;
+console.log = function (message, ...optionalParams) {
+    const p = document.createElement("p");
+    p.className = "logs";
+    p.appendChild(document.createTextNode(message));
+    document.body.appendChild(p);
+    log(message, ...optionalParams)
+}
+
 const warn = console.warn;
 console.warn = function (message, ...optionalParams) {
     if (message.startsWith("Feature flags")) {

@@ -23,7 +23,7 @@ import { createApp, onMounted, version } from 'vue';
 window.layoutCreateApp = createApp;
 
 onMounted(() => {
-  console.warn('mounted');
+  console.log('mounted');
 })
 </script>
 

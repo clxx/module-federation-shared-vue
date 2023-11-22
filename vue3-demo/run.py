@@ -23,7 +23,7 @@ def scrape(url):
         return (hostVersion, remoteVersion, sameInstance, warnings)
 
 
-def start(host_vue_version, remote_vue_version, host_shared, remote_shared):
+def start(count, host_vue_version, remote_vue_version, host_shared, remote_shared):
     pnpm_lock_yaml = Path("..", "pnpm-lock.yaml")
     pnpm_lock_yaml_bytes = pnpm_lock_yaml.read_bytes()
 
@@ -40,7 +40,9 @@ def start(host_vue_version, remote_vue_version, host_shared, remote_shared):
     remote_package_json_text = remote_package_json.read_text("utf-8")
     remote_package_json_data = json.loads(remote_package_json_text)
     remote_package_json_data["dependencies"]["vue"] = remote_vue_version
-    remote_package_json_data["devDependencies"]["@vue/compiler-sfc"] = remote_vue_version
+    remote_package_json_data["devDependencies"][
+        "@vue/compiler-sfc"
+    ] = remote_vue_version
     remote_package_json.write_text(
         json.dumps(remote_package_json_data, indent=2) + "\n", "utf-8"
     )
@@ -54,20 +56,22 @@ def start(host_vue_version, remote_vue_version, host_shared, remote_shared):
     remote_shared_json.write_text(json.dumps(remote_shared, indent=2), "utf-8")
 
     try:
-        subprocess.run("pnpm install", shell=True)
+        subprocess.run("pnpm install", stdout=subprocess.DEVNULL, shell=True)
 
         with subprocess.Popen(
             "pnpm start",
             stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
             shell=True,
             encoding="utf-8",
         ) as proc:
             host = False
             remote = False
             url = ""
+            lines = []
             while line := proc.stdout.readline():
+                lines.append(line)
                 line = line.strip()
-                # print(line)
                 if match := re.fullmatch(
                     r"layout start: <i> \[webpack-dev-server\] Loopback: (.+)", line
                 ):
@@ -82,10 +86,19 @@ def start(host_vue_version, remote_vue_version, host_shared, remote_shared):
                         remote = True
                 if host and remote and url:
                     break
-            result = scrape(url)
-            print(
-                host_vue_version, remote_vue_version, host_shared, remote_shared, result
-            )
+            if host and remote and url:
+                result = scrape(url)
+                print(
+                    count,
+                    host_vue_version,
+                    remote_vue_version,
+                    host_shared,
+                    remote_shared,
+                    result,
+                )
+            else:
+                print(*lines)
+                raise RuntimeError()
             proc.terminate()
     finally:
         pnpm_lock_yaml.write_bytes(pnpm_lock_yaml_bytes)
@@ -95,6 +108,7 @@ def start(host_vue_version, remote_vue_version, host_shared, remote_shared):
         remote_shared_json.write_text(remote_shared_json_text, "utf-8")
 
 
+count = 0
 for host_vue_version in ["^3.3.8", "^3.0.11"]:
     for remote_vue_version in ["^3.3.8", "^3.0.11"]:
         if host_vue_version == remote_vue_version:
@@ -117,7 +131,7 @@ for host_vue_version in ["^3.3.8", "^3.0.11"]:
                 for is_singleton in [None, False, True]:
                     if is_singleton is not None and host_vue_shared is None:
                         continue
-                    for is_import in [None, False, True]:
+                    for is_import in [None, False]:
                         if is_import is not None and host_vue_shared is None:
                             continue
                         host_shared = (
@@ -155,7 +169,9 @@ for host_vue_version in ["^3.3.8", "^3.0.11"]:
                             if remote_vue_shared is not None
                             else {}
                         )
+                        count += 1
                         start(
+                            count,
                             host_vue_version,
                             remote_vue_version,
                             host_shared,
