@@ -1,4 +1,4 @@
-const  shared  = require('./shared.json');
+const shared = require('./shared.json');
 const path = require('path');
 const { VueLoaderPlugin } = require('vue-loader');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -55,11 +55,7 @@ module.exports = (env = {}) => ({
         home: 'home@http://localhost:3002/remoteEntry.js',
       },
       exposes: {},
-      shared: {
-        vue: {
-          singleton: true,
-        },
-      },
+      shared,
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './index.html'),
@@ -81,3 +77,4 @@ module.exports = (env = {}) => ({
     },
   },
 });
+console.log(JSON.stringify(module.exports(), undefined, 2));

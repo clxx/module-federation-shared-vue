@@ -1,4 +1,4 @@
-const  shared  = require('./shared.json');
+const shared = require('./shared.json');
 const path = require('path');
 const { VueLoaderPlugin } = require('vue-loader');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -82,3 +82,4 @@ module.exports = (env = {}) => ({
     },
   },
 });
+console.log(JSON.stringify(module.exports(), undefined, 2));

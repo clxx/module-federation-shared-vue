@@ -8,12 +8,13 @@ from playwright.sync_api import expect, sync_playwright
 
 # https://github.com/microsoft/playwright-python
 def scrape(url):
-    print(url)
     with sync_playwright() as p:
         browser = p.chromium.launch()
         page = browser.new_page()
         page.goto(url)
-        page.get_by_text("mounted", True).wait_for()
+        page.get_by_text("mounted", exact=True).wait_for()
+        expect(page.locator("p.errors")).to_have_count(0)
+        page.screenshot(path="screenshot.png")
         hostVersion = page.locator("#hostVersion").inner_text()
         remoteVersion = page.locator("#remoteVersion").inner_text()
         sameInstance = page.locator("#sameInstance").inner_text()
@@ -23,17 +24,24 @@ def scrape(url):
 
 
 def start(home_vue_version, layout_vue_version, home_shared, layout_shared):
+    pnpm_lock_yaml = Path("pnpm-lock.yaml")
+    pnpm_lock_yaml_bytes = pnpm_lock_yaml.read_bytes()
+
     home_package_json = Path("home", "package.json")
     home_package_json_text = home_package_json.read_text("utf-8")
     home_package_json_data = json.loads(home_package_json_text)
     home_package_json_data["dependencies"]["vue"] = home_vue_version
-    home_package_json.write_text(json.dumps(layout_package_json_data), "utf-8")
+    home_package_json.write_text(
+        json.dumps(home_package_json_data, indent=2) + "\n", "utf-8"
+    )
 
     layout_package_json = Path("layout", "package.json")
     layout_package_json_text = layout_package_json.read_text("utf-8")
     layout_package_json_data = json.loads(layout_package_json_text)
     layout_package_json_data["dependencies"]["vue"] = layout_vue_version
-    layout_package_json.write_text(json.dumps(layout_package_json_data), "utf-8")
+    layout_package_json.write_text(
+        json.dumps(layout_package_json_data, indent=2) + "\n", "utf-8"
+    )
 
     home_shared_json = Path("home", "shared.json")
     home_shared_json_text = home_shared_json.read_text("utf-8")
@@ -58,6 +66,7 @@ def start(home_vue_version, layout_vue_version, home_shared, layout_shared):
             url = ""
             while line := proc.stdout.readline():
                 line = line.strip()
+                print(line)
                 if match := re.fullmatch(
                     r"layout start: <i> \[webpack-dev-server\] Loopback: (.+)", line
                 ):
@@ -78,6 +87,7 @@ def start(home_vue_version, layout_vue_version, home_shared, layout_shared):
             )
             proc.terminate()
     finally:
+        pnpm_lock_yaml.write_bytes(pnpm_lock_yaml_bytes)
         home_package_json.write_text(home_package_json_text, "utf-8")
         layout_package_json.write_text(layout_package_json_text, "utf-8")
         home_shared_json.write_text(home_shared_json_text, "utf-8")

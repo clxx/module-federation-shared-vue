@@ -8,5 +8,12 @@ console.warn = function (message) {
     document.body.appendChild(p)
 }
 
+console.error = function (message) {
+    const p = document.createElement("p");
+    p.className = "errors";
+    p.appendChild(document.createTextNode(message));
+    document.body.appendChild(p)
+}
+
 // https://webpack.js.org/concepts/module-federation/#uncaught-error-shared-module-is-not-available-for-eager-consumption
 import('./main.js');
