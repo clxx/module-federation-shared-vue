@@ -52,7 +52,7 @@ def start(home_vue_version, layout_vue_version, home_shared, layout_shared):
     layout_shared_json.write_text(json.dumps(layout_shared, indent=2), "utf-8")
 
     try:
-        subprocess.run("pnpm install", shell=True)
+        subprocess.run("pnpm i", shell=True)
 
         with subprocess.Popen(
             "pnpm start",
