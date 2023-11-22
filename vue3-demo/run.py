@@ -67,7 +67,7 @@ def start(host_vue_version, remote_vue_version, host_shared, remote_shared):
             url = ""
             while line := proc.stdout.readline():
                 line = line.strip()
-                print(line)
+                # print(line)
                 if match := re.fullmatch(
                     r"layout start: <i> \[webpack-dev-server\] Loopback: (.+)", line
                 ):

@@ -77,4 +77,5 @@ module.exports = (env = {}) => ({
     },
   },
 });
-console.log(JSON.stringify(module.exports(), undefined, 2));
+
+// console.log(JSON.stringify(module.exports(), undefined, 2));
