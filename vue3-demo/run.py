@@ -180,10 +180,16 @@ for host_package_version in ["^3.3.8", "^3.0.11"]:
                             else {}
                         )
                         count += 1
-                        print("Run", count)
+                        print(
+                            "Test",
+                            count,
+                            host_package_version,
+                            remote_package_version,
+                            host_shared,
+                            remote_shared,
+                        )
                         results.append(
                             start(
-                                count,
                                 host_package_version,
                                 remote_package_version,
                                 host_shared,
