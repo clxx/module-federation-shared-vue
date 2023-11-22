@@ -23,33 +23,33 @@ def scrape(url):
         return (hostVersion, remoteVersion, sameInstance, warnings)
 
 
-def start(home_vue_version, layout_vue_version, home_shared, layout_shared):
+def start(host_vue_version, remote_vue_version, host_shared, remote_shared):
     pnpm_lock_yaml = Path("..", "pnpm-lock.yaml")
     pnpm_lock_yaml_bytes = pnpm_lock_yaml.read_bytes()
 
-    home_package_json = Path("home", "package.json")
-    home_package_json_text = home_package_json.read_text("utf-8")
-    home_package_json_data = json.loads(home_package_json_text)
-    home_package_json_data["dependencies"]["vue"] = home_vue_version
-    home_package_json.write_text(
-        json.dumps(home_package_json_data, indent=2) + "\n", "utf-8"
+    host_package_json = Path("layout", "package.json")
+    host_package_json_text = host_package_json.read_text("utf-8")
+    host_package_json_data = json.loads(host_package_json_text)
+    host_package_json_data["dependencies"]["vue"] = host_vue_version
+    host_package_json.write_text(
+        json.dumps(host_package_json_data, indent=2) + "\n", "utf-8"
     )
 
-    layout_package_json = Path("layout", "package.json")
-    layout_package_json_text = layout_package_json.read_text("utf-8")
-    layout_package_json_data = json.loads(layout_package_json_text)
-    layout_package_json_data["dependencies"]["vue"] = layout_vue_version
-    layout_package_json.write_text(
-        json.dumps(layout_package_json_data, indent=2) + "\n", "utf-8"
+    remote_package_json = Path("home", "package.json")
+    remote_package_json_text = remote_package_json.read_text("utf-8")
+    remote_package_json_data = json.loads(remote_package_json_text)
+    remote_package_json_data["dependencies"]["vue"] = remote_vue_version
+    remote_package_json.write_text(
+        json.dumps(remote_package_json_data, indent=2) + "\n", "utf-8"
     )
 
-    home_shared_json = Path("home", "shared.json")
-    home_shared_json_text = home_shared_json.read_text("utf-8")
-    home_shared_json.write_text(json.dumps(home_shared, indent=2), "utf-8")
+    host_shared_json = Path("layout", "shared.json")
+    host_shared_json_text = host_shared_json.read_text("utf-8")
+    host_shared_json.write_text(json.dumps(host_shared, indent=2), "utf-8")
 
-    layout_shared_json = Path("layout", "shared.json")
-    layout_shared_json_text = layout_shared_json.read_text("utf-8")
-    layout_shared_json.write_text(json.dumps(layout_shared, indent=2), "utf-8")
+    remote_shared_json = Path("home", "shared.json")
+    remote_shared_json_text = remote_shared_json.read_text("utf-8")
+    remote_shared_json.write_text(json.dumps(remote_shared, indent=2), "utf-8")
 
     try:
         subprocess.run("pnpm i", shell=True)
@@ -57,12 +57,11 @@ def start(home_vue_version, layout_vue_version, home_shared, layout_shared):
         with subprocess.Popen(
             "pnpm start",
             stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
             shell=True,
             encoding="utf-8",
         ) as proc:
-            home = False
-            layout = False
+            host = False
+            remote = False
             url = ""
             while line := proc.stdout.readline():
                 line = line.strip()
@@ -75,56 +74,73 @@ def start(home_vue_version, layout_vue_version, home_shared, layout_shared):
                     r"(home|layout) start: webpack \d+\.\d+\.\d+ compiled successfully in \d+ ms",
                     line,
                 ):
-                    if match.group(1) == "home":
-                        home = True
-                    elif match.group(1) == "layout":
-                        layout = True
-                if home and layout and url:
+                    if match.group(1) == "layout":
+                        host = True
+                    elif match.group(1) == "home":
+                        remote = True
+                if host and remote and url:
                     break
             result = scrape(url)
             print(
-                home_vue_version, layout_vue_version, home_shared, layout_shared, result
+                host_vue_version, remote_vue_version, host_shared, remote_shared, result
             )
             proc.terminate()
     finally:
         pnpm_lock_yaml.write_bytes(pnpm_lock_yaml_bytes)
-        home_package_json.write_text(home_package_json_text, "utf-8")
-        layout_package_json.write_text(layout_package_json_text, "utf-8")
-        home_shared_json.write_text(home_shared_json_text, "utf-8")
-        layout_shared_json.write_text(layout_shared_json_text, "utf-8")
+        host_package_json.write_text(host_package_json_text, "utf-8")
+        remote_package_json.write_text(remote_package_json_text, "utf-8")
+        host_shared_json.write_text(host_shared_json_text, "utf-8")
+        remote_shared_json.write_text(remote_shared_json_text, "utf-8")
 
 
-for home_vue_version in ["^3.3.8", "^3.0.11"]:
-    for layout_vue_version in ["^3.3.8", "^3.0.11"]:
-        if home_vue_version == layout_vue_version:
+for host_vue_version in ["^3.3.8", "^3.0.11"]:
+    for remote_vue_version in ["^3.3.8", "^3.0.11"]:
+        if host_vue_version == remote_vue_version:
             continue
-        for home_vue_shared, layout_vue_shared in [
+        for host_vue_shared, remote_vue_shared in [
             (None, None),
             ({}, {}),
             (
-                {"version": home_vue_version},
-                {"version": layout_vue_version},
+                {"version": host_vue_version},
+                {"version": remote_vue_version},
             ),
             (
-                {"requiredVersion": home_vue_version},
-                {"requiredVersion": layout_vue_version},
+                {"requiredVersion": host_vue_version},
+                {"requiredVersion": remote_vue_version},
             ),
         ]:
             for is_strict_version in [None, False, True]:
-                if is_strict_version is not None and home_vue_shared is None:
+                if is_strict_version is not None and host_vue_shared is None:
                     continue
                 for is_singleton in [None, False, True]:
-                    if is_singleton is not None and home_vue_shared is None:
+                    if is_singleton is not None and host_vue_shared is None:
                         continue
                     for is_import in [None, False, True]:
-                        if is_import is not None and home_vue_shared is None:
+                        if is_import is not None and host_vue_shared is None:
                             continue
-                        home_shared = (
+                        host_shared = (
                             {
                                 "vue": {
                                     key: value
                                     for key, value in (
-                                        home_vue_shared
+                                        host_vue_shared
+                                        | {
+                                            "strictVersion": is_strict_version,
+                                            "singleton": is_singleton,
+                                        }
+                                    ).items()
+                                    if value is not None
+                                }
+                            }
+                            if host_vue_shared is not None
+                            else {}
+                        )
+                        remote_shared = (
+                            {
+                                "vue": {
+                                    key: value
+                                    for key, value in (
+                                        remote_vue_shared
                                         | {
                                             "strictVersion": is_strict_version,
                                             "singleton": is_singleton,
@@ -134,29 +150,12 @@ for home_vue_version in ["^3.3.8", "^3.0.11"]:
                                     if value is not None
                                 }
                             }
-                            if home_vue_shared is not None
-                            else {}
-                        )
-                        layout_shared = (
-                            {
-                                "vue": {
-                                    key: value
-                                    for key, value in (
-                                        layout_vue_shared
-                                        | {
-                                            "strictVersion": is_strict_version,
-                                            "singleton": is_singleton,
-                                        }
-                                    ).items()
-                                    if value is not None
-                                }
-                            }
-                            if layout_vue_shared is not None
+                            if remote_vue_shared is not None
                             else {}
                         )
                         start(
-                            home_vue_version,
-                            layout_vue_version,
-                            home_shared,
-                            layout_shared,
+                            host_vue_version,
+                            remote_vue_version,
+                            host_shared,
+                            remote_shared,
                         )
