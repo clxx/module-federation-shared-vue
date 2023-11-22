@@ -200,7 +200,7 @@ for host_package_version in ["^3.3.8", "^3.0.11"]:
                             )
                         )
 
-results.sort(key=lambda result: json.dumps(result["scraped"], sort_keys=True))
+results.sort(key=json.dumps)
 
 results_json = Path("results.json")
 results_json.write_text(json.dumps(results, indent=2), "utf-8")
