@@ -18,20 +18,27 @@ def scrape(url):
         hostVersion = page.locator("#hostVersion").inner_text()
         remoteVersion = page.locator("#remoteVersion").inner_text()
         sameInstance = page.locator("#sameInstance").inner_text()
-        warnings = page.locator("p.warnings").all_inner_texts()
+        messages = page.locator("p.warnings, p.errors").all_inner_texts()
         browser.close()
-        return (hostVersion, remoteVersion, sameInstance, warnings)
+        return {
+            "hostVersion": hostVersion,
+            "remoteVersion": remoteVersion,
+            "sameInstance": json.loads(sameInstance),
+            "messages": messages,
+        }
 
 
-def start(count, host_vue_version, remote_vue_version, host_shared, remote_shared):
+def start(host_package_version, remote_package_version, host_shared, remote_shared):
     pnpm_lock_yaml = Path("..", "pnpm-lock.yaml")
     pnpm_lock_yaml_bytes = pnpm_lock_yaml.read_bytes()
 
     host_package_json = Path("layout", "package.json")
     host_package_json_text = host_package_json.read_text("utf-8")
     host_package_json_data = json.loads(host_package_json_text)
-    host_package_json_data["dependencies"]["vue"] = host_vue_version
-    host_package_json_data["devDependencies"]["@vue/compiler-sfc"] = host_vue_version
+    host_package_json_data["dependencies"]["vue"] = host_package_version
+    host_package_json_data["devDependencies"][
+        "@vue/compiler-sfc"
+    ] = host_package_version
     host_package_json.write_text(
         json.dumps(host_package_json_data, indent=2) + "\n", "utf-8"
     )
@@ -39,10 +46,10 @@ def start(count, host_vue_version, remote_vue_version, host_shared, remote_share
     remote_package_json = Path("home", "package.json")
     remote_package_json_text = remote_package_json.read_text("utf-8")
     remote_package_json_data = json.loads(remote_package_json_text)
-    remote_package_json_data["dependencies"]["vue"] = remote_vue_version
+    remote_package_json_data["dependencies"]["vue"] = remote_package_version
     remote_package_json_data["devDependencies"][
         "@vue/compiler-sfc"
-    ] = remote_vue_version
+    ] = remote_package_version
     remote_package_json.write_text(
         json.dumps(remote_package_json_data, indent=2) + "\n", "utf-8"
     )
@@ -54,6 +61,8 @@ def start(count, host_vue_version, remote_vue_version, host_shared, remote_share
     remote_shared_json = Path("home", "shared.json")
     remote_shared_json_text = remote_shared_json.read_text("utf-8")
     remote_shared_json.write_text(json.dumps(remote_shared, indent=2), "utf-8")
+
+    result = None
 
     try:
         subprocess.run("pnpm install", stdout=subprocess.DEVNULL, shell=True)
@@ -85,21 +94,19 @@ def start(count, host_vue_version, remote_vue_version, host_shared, remote_share
                     elif match.group(1) == "home":
                         remote = True
                 if host and remote and url:
+                    result = {
+                        "scraped": scrape(url),
+                        "hostPackage": host_package_version,
+                        "remotePackage": remote_package_version,
+                        "hostWebpackSharedHints": host_shared,
+                        "remoteWebpackSharedHints": remote_shared,
+                    }
                     break
-            if host and remote and url:
-                result = scrape(url)
-                print(
-                    count,
-                    host_vue_version,
-                    remote_vue_version,
-                    host_shared,
-                    remote_shared,
-                    result,
-                )
-            else:
+            if not result:
                 print(*lines)
                 raise RuntimeError()
             proc.terminate()
+            return result
     finally:
         pnpm_lock_yaml.write_bytes(pnpm_lock_yaml_bytes)
         host_package_json.write_text(host_package_json_text, "utf-8")
@@ -109,20 +116,23 @@ def start(count, host_vue_version, remote_vue_version, host_shared, remote_share
 
 
 count = 0
-for host_vue_version in ["^3.3.8", "^3.0.11"]:
-    for remote_vue_version in ["^3.3.8", "^3.0.11"]:
-        if host_vue_version == remote_vue_version:
+
+results = []
+
+for host_package_version in ["^3.3.8", "^3.0.11"]:
+    for remote_package_version in ["^3.3.8", "^3.0.11"]:
+        if host_package_version == remote_package_version:
             continue
         for host_vue_shared, remote_vue_shared in [
             (None, None),
             ({}, {}),
             (
-                {"version": host_vue_version},
-                {"version": remote_vue_version},
+                {"version": host_package_version},
+                {"version": remote_package_version},
             ),
             (
-                {"requiredVersion": host_vue_version},
-                {"requiredVersion": remote_vue_version},
+                {"requiredVersion": host_package_version},
+                {"requiredVersion": remote_package_version},
             ),
         ]:
             for is_strict_version in [None, False, True]:
@@ -170,10 +180,18 @@ for host_vue_version in ["^3.3.8", "^3.0.11"]:
                             else {}
                         )
                         count += 1
-                        start(
-                            count,
-                            host_vue_version,
-                            remote_vue_version,
-                            host_shared,
-                            remote_shared,
+                        print("Run", count)
+                        results.append(
+                            start(
+                                count,
+                                host_package_version,
+                                remote_package_version,
+                                host_shared,
+                                remote_shared,
+                            )
                         )
+
+results.sort(key=lambda result: json.dumps(result["scraped"], sort_keys=True))
+
+results_json = Path("results.json")
+results_json.write_text(json.dumps(results, indent=2), "utf-8")
