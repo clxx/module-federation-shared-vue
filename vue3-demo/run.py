@@ -1,3 +1,4 @@
+import argparse
 import json
 import re
 import subprocess
@@ -6,6 +7,14 @@ import sys
 from natsort import natsorted
 from pathlib import Path
 from playwright.sync_api import expect, sync_playwright
+
+parser = argparse.ArgumentParser()
+parser.add_argument(
+    "--comparison",
+    help="use the same (newest) version for host and remote",
+    action="store_true",
+)
+args = parser.parse_args()
 
 
 # https://github.com/microsoft/playwright-python
@@ -130,11 +139,21 @@ def main():
 
     results = []
 
+    newVersion = "^3.3.8"
+    oldVersion = "^3.0.11"
+
     # https://webpack.js.org/plugins/module-federation-plugin/#sharing-hints
-    for host_package_version in ["^3.3.8", "^3.0.11"]:
-        for remote_package_version in ["^3.3.8", "^3.0.11"]:
-            if host_package_version == remote_package_version:
+    for host_package_version in [newVersion, oldVersion]:
+        for remote_package_version in [newVersion, oldVersion]:
+            if (
+                not args.comparison and host_package_version == remote_package_version
+            ) or (
+                args.comparison
+                and host_package_version != newVersion
+                or remote_package_version != newVersion
+            ):
                 continue
+
             for host_vue_shared, remote_vue_shared in [
                 (
                     None,
