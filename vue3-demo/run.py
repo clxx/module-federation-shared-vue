@@ -1,12 +1,12 @@
 import argparse
+import asyncio
 import json
 import re
 import subprocess
-import sys
 
 from natsort import natsorted
 from pathlib import Path
-from playwright.sync_api import expect, sync_playwright
+from playwright.async_api import expect, async_playwright
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
@@ -18,20 +18,29 @@ args = parser.parse_args()
 
 
 # https://github.com/microsoft/playwright-python
-def scrape(url):
-    with sync_playwright() as p:
-        browser = p.chromium.launch()
-        page = browser.new_page()
-        page.goto(url)
-        page.get_by_text("host mounted", exact=True).wait_for()
-        page.get_by_text("remote mounted", exact=True).wait_for()
-        expect(page.locator("p.errors")).to_have_count(0)
-        page.screenshot(path="screenshot.png")
-        host_version = page.locator("#hostVersion").inner_text()
-        remote_version = page.locator("#remoteVersion").inner_text()
-        same_instance = page.locator("#sameInstance").inner_text()
-        messages = page.locator("p.warnings").all_inner_texts()
-        browser.close()
+async def scrape(url):
+    async with async_playwright() as p:
+        browser = await p.chromium.launch()
+        page = await browser.new_page()
+        await page.goto(url)
+        try:
+            await page.get_by_text("host mounted", exact=True).wait_for(timeout=3000)
+            await page.get_by_text("remote mounted", exact=True).wait_for(timeout=3000)
+        except:
+            await page.screenshot(path="screenshot.png")
+            await browser.close()
+            return {
+                "error": await page.frame_locator("#webpack-dev-server-client-overlay")
+                .locator("#webpack-dev-server-client-overlay-div")
+                .all_inner_texts(),
+            }
+        await expect(page.locator("p.errors")).to_have_count(0)
+        await page.screenshot(path="screenshot.png")
+        host_version = await page.locator("#hostVersion").inner_text()
+        remote_version = await page.locator("#remoteVersion").inner_text()
+        same_instance = await page.locator("#sameInstance").inner_text()
+        messages = await page.locator("p.warnings").all_inner_texts()
+        await browser.close()
         return {
             "messages": messages,
             "host": host_version,
@@ -40,7 +49,7 @@ def scrape(url):
         }
 
 
-def start(
+async def run(
     host_package_version, remote_package_version, host_shared_hints, remote_shared_hints
 ):
     pnpm_lock_yaml = Path("..", "pnpm-lock.yaml")
@@ -109,7 +118,7 @@ def start(
                         remote = True
                 if host and remote and url:
                     result = {
-                        "actual": scrape(url),
+                        "actual": await scrape(url),
                         "config": {
                             "host": {
                                 "package": host_package_version,
@@ -134,7 +143,7 @@ def start(
         remote_shared_json.write_text(remote_shared_json_text, "utf-8")
 
 
-def main():
+async def main():
     count = 0
 
     results = []
@@ -240,7 +249,7 @@ def main():
                                 remote_shared,
                             )
 
-                            result = start(
+                            result = await run(
                                 host_package_version,
                                 remote_package_version,
                                 host_shared,
@@ -248,7 +257,7 @@ def main():
                             )
 
                             if not result:
-                                return 1
+                                return
 
                             results.append(result)
 
@@ -257,8 +266,5 @@ def main():
         json.dumps(natsorted(results, json.dumps), indent=2), "utf-8"
     )
 
-    return 0
 
-
-if __name__ == "__main__":
-    sys.exit(main())
+asyncio.run(main())
