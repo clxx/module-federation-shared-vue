@@ -114,7 +114,6 @@ def start(
                     break
             if not result:
                 print(*lines)
-                raise RuntimeError()
             proc.terminate()
             return result
     finally:
@@ -125,89 +124,121 @@ def start(
         remote_shared_json.write_text(remote_shared_json_text, "utf-8")
 
 
-count = 0
+def main():
+    count = 0
 
-results = []
+    results = []
 
-# https://webpack.js.org/plugins/module-federation-plugin/#sharing-hints
-for host_package_version in ["^3.3.8", "^3.0.11"]:
-    for remote_package_version in ["^3.3.8", "^3.0.11"]:
-        if host_package_version == remote_package_version:
-            continue
-        for host_vue_shared, remote_vue_shared in [
-            (None, None),
-            ({}, {}),
-            (
-                {"version": host_package_version},
-                {"version": remote_package_version},
-            ),
-            (
-                {"requiredVersion": host_package_version},
-                {"requiredVersion": remote_package_version},
-            ),
-        ]:
-            for is_strict_version in [None, False, True]:
-                if is_strict_version is not None and (
-                    host_vue_shared is None or "requiredVersion" not in host_vue_shared
-                ):
-                    continue
-                for is_singleton in [None, False, True]:
-                    if is_singleton is not None and host_vue_shared is None:
+    # https://webpack.js.org/plugins/module-federation-plugin/#sharing-hints
+    for host_package_version in ["^3.3.8", "^3.0.11"]:
+        for remote_package_version in ["^3.3.8", "^3.0.11"]:
+            if host_package_version == remote_package_version:
+                continue
+            for host_vue_shared, remote_vue_shared in [
+                (
+                    None,
+                    None,
+                ),
+                (
+                    {},
+                    {},
+                ),
+                (
+                    {"version": host_package_version.lstrip("^")},
+                    {"version": remote_package_version.lstrip("^")},
+                ),
+                (
+                    {"requiredVersion": host_package_version},
+                    {"requiredVersion": remote_package_version},
+                ),
+                (
+                    {
+                        "version": host_package_version.lstrip("^"),
+                        "requiredVersion": host_package_version,
+                    },
+                    {
+                        "version": remote_package_version.lstrip("^"),
+                        "requiredVersion": remote_package_version,
+                    },
+                ),
+            ]:
+                for is_strict_version in [None, False, True]:
+                    if is_strict_version is not None and (
+                        host_vue_shared is None
+                        or "requiredVersion" not in host_vue_shared
+                    ):
                         continue
-                    for is_import in [None, False]:
-                        if is_import is not None and host_vue_shared is None:
+                    for is_singleton in [None, False, True]:
+                        if is_singleton is not None and host_vue_shared is None:
                             continue
-                        host_shared = (
-                            {
-                                "vue": {
-                                    key: value
-                                    for key, value in (
-                                        host_vue_shared
-                                        | {
-                                            "strictVersion": is_strict_version,
-                                            "singleton": is_singleton,
-                                        }
-                                    ).items()
-                                    if value is not None
+                        for is_import in [None, False]:
+                            if is_import is not None and host_vue_shared is None:
+                                continue
+                            host_shared = (
+                                {
+                                    "vue": {
+                                        key: value
+                                        for key, value in (
+                                            host_vue_shared
+                                            | {
+                                                "strictVersion": is_strict_version,
+                                                "singleton": is_singleton,
+                                            }
+                                        ).items()
+                                        if value is not None
+                                    }
                                 }
-                            }
-                            if host_vue_shared is not None
-                            else {}
-                        )
-                        remote_shared = (
-                            {
-                                "vue": {
-                                    key: value
-                                    for key, value in (
-                                        remote_vue_shared
-                                        | {
-                                            "strictVersion": is_strict_version,
-                                            "singleton": is_singleton,
-                                            "import": is_import,
-                                        }
-                                    ).items()
-                                    if value is not None
+                                if host_vue_shared is not None
+                                else {}
+                            )
+                            remote_shared = (
+                                {
+                                    "vue": {
+                                        key: value
+                                        for key, value in (
+                                            remote_vue_shared
+                                            | {
+                                                "strictVersion": is_strict_version,
+                                                "singleton": is_singleton,
+                                                "import": is_import,
+                                            }
+                                        ).items()
+                                        if value is not None
+                                    }
                                 }
-                            }
-                            if remote_vue_shared is not None
-                            else {}
-                        )
-                        count += 1
-                        print(
-                            count,
-                            host_package_version,
-                            remote_package_version,
-                            host_shared,
-                            remote_shared,
-                        )
-                        results.append(
-                            start(
+                                if remote_vue_shared is not None
+                                else {}
+                            )
+
+                            count += 1
+
+                            print(
+                                count,
                                 host_package_version,
                                 remote_package_version,
                                 host_shared,
                                 remote_shared,
                             )
-                        )
 
-results_json = Path("results.json")
-results_json.write_text(json.dumps(natsorted(results, json.dumps), indent=2), "utf-8")
+                            result = start(
+                                host_package_version,
+                                remote_package_version,
+                                host_shared,
+                                remote_shared,
+                            )
+
+                            if not result:
+                                return 1
+
+                            results.append(result)
+
+    results_json = Path("results.json")
+    results_json.write_text(
+        json.dumps(natsorted(results, json.dumps), indent=2), "utf-8"
+    )
+
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
