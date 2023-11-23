@@ -18,13 +18,9 @@
 </template>
 
 <script setup>
-import { createApp, onMounted, version } from 'vue';
+import { createApp, version } from 'vue';
 
 window.layoutCreateApp = createApp;
-
-onMounted(() => {
-  console.log('host mounted');
-})
 </script>
 
 <style scoped>

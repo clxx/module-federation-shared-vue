@@ -4,6 +4,8 @@ const { VueLoaderPlugin } = require('vue-loader');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('webpack').container;
+const { DefinePlugin } = require('webpack');
+
 module.exports = (env = {}) => ({
   mode: 'development',
   cache: false,
@@ -45,6 +47,10 @@ module.exports = (env = {}) => ({
     ],
   },
   plugins: [
+    new DefinePlugin({
+      __VUE_OPTIONS_API__: true,
+      __VUE_PROD_DEVTOOLS__: false
+    }),
     new MiniCssExtractPlugin({
       filename: '[name].css',
     }),
@@ -74,6 +80,9 @@ module.exports = (env = {}) => ({
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
       'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+    },
+    client: {
+      logging: 'warn',
     },
   },
 });

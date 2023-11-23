@@ -11,8 +11,4 @@ if (!window.layoutCreateApp) {
 }
 
 const sameInstance = createApp === window.layoutCreateApp;
-
-onMounted(() => {
-  console.log('remote mounted');
-})
 </script>

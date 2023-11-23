@@ -2,8 +2,8 @@ import argparse
 import asyncio
 import json
 import re
-import subprocess
 
+from collections import defaultdict
 from natsort import natsorted
 from pathlib import Path
 from playwright.async_api import expect, async_playwright
@@ -19,33 +19,31 @@ args = parser.parse_args()
 
 # https://github.com/microsoft/playwright-python
 async def scrape(url):
-    async with async_playwright() as p:
-        browser = await p.chromium.launch()
+    async with async_playwright() as playwright:
+        browser = await playwright.chromium.launch()
         page = await browser.new_page()
+        page.set_default_timeout(3000)
+        messages = defaultdict(list)
+        page.on("console", lambda message: messages[message.type].append(message.text))
         await page.goto(url)
-        try:
-            await page.get_by_text("host mounted", exact=True).wait_for(timeout=3000)
-            await page.get_by_text("remote mounted", exact=True).wait_for(timeout=3000)
-        except:
-            await page.screenshot(path="screenshot.png")
-            await browser.close()
-            return {
-                "error": await page.frame_locator("#webpack-dev-server-client-overlay")
-                .locator("#webpack-dev-server-client-overlay-div")
-                .all_inner_texts(),
-            }
-        await expect(page.locator("p.errors")).to_have_count(0)
         await page.screenshot(path="screenshot.png")
         host_version = await page.locator("#hostVersion").inner_text()
-        remote_version = await page.locator("#remoteVersion").inner_text()
-        same_instance = await page.locator("#sameInstance").inner_text()
-        messages = await page.locator("p.warnings").all_inner_texts()
+        remote_version = (
+            await page.locator("#remoteVersion").inner_text()
+            if await page.locator("#remoteVersion").is_visible()
+            else None
+        )
+        same_instance = (
+            json.loads(await page.locator("#sameInstance").inner_text())
+            if await page.locator("#sameInstance").is_visible()
+            else None
+        )
         await browser.close()
         return {
             "messages": messages,
             "host": host_version,
             "remote": remote_version,
-            "singleton": json.loads(same_instance),
+            "singleton": same_instance,
         }
 
 
@@ -85,56 +83,57 @@ async def run(
     remote_shared_json_text = remote_shared_json.read_text("utf-8")
     remote_shared_json.write_text(json.dumps(remote_shared_hints, indent=2), "utf-8")
 
-    result = None
-
     try:
-        subprocess.run("pnpm install", stdout=subprocess.DEVNULL, shell=True)
+        install = await asyncio.create_subprocess_exec(
+            "pnpm", "install", stdout=asyncio.subprocess.DEVNULL
+        )
+        await install.wait()
 
-        with subprocess.Popen(
-            "pnpm start",
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
-            shell=True,
-            encoding="utf-8",
-        ) as proc:
-            host = False
-            remote = False
-            url = ""
-            lines = []
-            while line := proc.stdout.readline():
-                lines.append(line)
-                line = line.strip()
-                if match := re.fullmatch(
-                    r"layout start: <i> \[webpack-dev-server\] Loopback: (.+)", line
-                ):
-                    url = match.group(1)
-                elif match := re.fullmatch(
-                    r"(home|layout) start: webpack \d+\.\d+\.\d+ compiled successfully in \d+ ms",
-                    line,
-                ):
-                    if match.group(1) == "layout":
-                        host = True
-                    elif match.group(1) == "home":
-                        remote = True
-                if host and remote and url:
-                    result = {
-                        "actual": await scrape(url),
-                        "config": {
-                            "host": {
-                                "package": host_package_version,
-                                "shared": host_shared_hints,
-                            },
-                            "remote": {
-                                "package": remote_package_version,
-                                "shared": remote_shared_hints,
-                            },
-                        },
-                    }
-                    break
-            if not result:
-                print(*lines)
-            proc.terminate()
-            return result
+        start = await asyncio.create_subprocess_exec(
+            "pnpm",
+            "start",
+            stdout=asyncio.subprocess.PIPE,
+            stderr=asyncio.subprocess.STDOUT,
+        )
+
+        host = None
+        remote = None
+        url = None
+
+        while not (host and remote and url):
+            line = (await start.stdout.readline()).decode("utf-8").rstrip()
+            # print(line)
+            if match := re.fullmatch(
+                r"layout start: <i> \[webpack-dev-server\] Loopback: (.+)", line
+            ):
+                url = match.group(1)
+            elif match := re.fullmatch(
+                r"(home|layout) start: webpack \d+\.\d+\.\d+ compiled successfully in \d+ ms",
+                line,
+            ):
+                if match.group(1) == "layout":
+                    host = True
+                elif match.group(1) == "home":
+                    remote = True
+
+        result = {
+            "actual": await scrape(url),
+            "config": {
+                "host": {
+                    "package": host_package_version,
+                    "shared": host_shared_hints,
+                },
+                "remote": {
+                    "package": remote_package_version,
+                    "shared": remote_shared_hints,
+                },
+            },
+        }
+        start.terminate()
+        await start.wait()
+        return result
+    except Exception as exception:
+        print(exception)
     finally:
         pnpm_lock_yaml.write_bytes(pnpm_lock_yaml_bytes)
         host_package_json.write_text(host_package_json_text, "utf-8")
@@ -158,8 +157,10 @@ async def main():
                 not args.comparison and host_package_version == remote_package_version
             ) or (
                 args.comparison
-                and host_package_version != newVersion
-                or remote_package_version != newVersion
+                and (
+                    host_package_version != newVersion
+                    or remote_package_version != newVersion
+                )
             ):
                 continue
 
@@ -258,6 +259,10 @@ async def main():
 
                             if not result:
                                 return
+
+                            print()
+                            print(result)
+                            print()
 
                             results.append(result)
 
