@@ -1,4 +1,3 @@
-import argparse
 import asyncio
 import json
 import re
@@ -7,14 +6,6 @@ from collections import defaultdict
 from natsort import natsorted
 from pathlib import Path
 from playwright.async_api import expect, async_playwright
-
-parser = argparse.ArgumentParser()
-parser.add_argument(
-    "--comparison",
-    help="use the same (newest) version for host and remote",
-    action="store_true",
-)
-args = parser.parse_args()
 
 
 # https://github.com/microsoft/playwright-python
@@ -47,7 +38,7 @@ async def scrape(url):
         }
 
 
-async def run(
+async def serve(
     host_package_version, remote_package_version, host_shared_hints, remote_shared_hints
 ):
     pnpm_lock_yaml = Path("..", "pnpm-lock.yaml")
@@ -142,7 +133,7 @@ async def run(
         remote_shared_json.write_text(remote_shared_json_text, "utf-8")
 
 
-async def main():
+async def run(baseline):
     count = 0
 
     results = []
@@ -153,10 +144,8 @@ async def main():
     # https://webpack.js.org/plugins/module-federation-plugin/#sharing-hints
     for host_package_version in [newVersion, oldVersion]:
         for remote_package_version in [newVersion, oldVersion]:
-            if (
-                not args.comparison and host_package_version == remote_package_version
-            ) or (
-                args.comparison
+            if (not baseline and host_package_version == remote_package_version) or (
+                baseline
                 and (
                     host_package_version != newVersion
                     or remote_package_version != newVersion
@@ -260,7 +249,7 @@ async def main():
                                 flush=True,
                             )
 
-                            result = await run(
+                            result = await serve(
                                 host_package_version,
                                 remote_package_version,
                                 host_shared,
@@ -276,10 +265,17 @@ async def main():
 
                             results.append(result)
 
-    results_json = Path("results.json")
+    results_json = Path(
+        "results_same_versions.json" if baseline else "results_different_versions.json"
+    )
     results_json.write_text(
         json.dumps(natsorted(results, json.dumps), indent=2), "utf-8"
     )
+
+
+async def main():
+    await run(False)
+    await run(True)
 
 
 asyncio.run(main())
