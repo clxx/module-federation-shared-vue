@@ -244,12 +244,16 @@ async def main():
 
                             print(
                                 f"{count:03}",
+                                "|",
                                 "host package version:",
                                 host_package_version,
+                                "|",
                                 "remote package version:",
                                 remote_package_version,
+                                "|",
                                 "host shared:",
                                 json.dumps(host_shared),
+                                "|",
                                 "remote shared:",
                                 json.dumps(remote_shared),
                             )
