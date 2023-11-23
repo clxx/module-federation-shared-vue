@@ -134,4 +134,4 @@ buildServer
 /federated-express-routes/remote/build/
 
 vue3-demo/screenshot.png
-vue3-demo/results.json
+vue3-demo/results*.json
