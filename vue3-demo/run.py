@@ -256,6 +256,8 @@ async def main():
                                 "|",
                                 "remote shared:",
                                 json.dumps(remote_shared),
+                                end=" ",
+                                flush=True,
                             )
 
                             result = await run(
@@ -268,8 +270,7 @@ async def main():
                             if not result:
                                 return
 
-                            print()
-                            print(json.dumps(result))
+                            print("|", "scraped result:", json.dumps(result))
                             print()
 
                             results.append(result)
