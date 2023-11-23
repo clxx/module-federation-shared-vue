@@ -243,8 +243,7 @@ async def main():
                             count += 1
 
                             print(
-                                "#",
-                                count,
+                                f"{count:03}:",
                                 host_package_version,
                                 remote_package_version,
                                 json.dumps(host_shared),
