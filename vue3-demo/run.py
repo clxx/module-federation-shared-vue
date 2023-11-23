@@ -246,8 +246,8 @@ async def main():
                                 count,
                                 host_package_version,
                                 remote_package_version,
-                                host_shared,
-                                remote_shared,
+                                json.dumps(host_shared),
+                                json.dumps(remote_shared),
                             )
 
                             result = await run(
@@ -261,7 +261,7 @@ async def main():
                                 return
 
                             print()
-                            print(result)
+                            print(json.dumps(result))
                             print()
 
                             results.append(result)
