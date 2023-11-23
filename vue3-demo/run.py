@@ -243,6 +243,7 @@ async def main():
                             count += 1
 
                             print(
+                                "#",
                                 count,
                                 host_package_version,
                                 remote_package_version,
