@@ -266,7 +266,7 @@ async def run(baseline):
                             results.append(result)
 
     results_json = Path(
-        "results_same_versions.json" if baseline else "results_different_versions.json"
+        "results_same_version.json" if baseline else "results_different_versions.json"
     )
     results_json.write_text(
         json.dumps(natsorted(results, json.dumps), indent=2), "utf-8"
