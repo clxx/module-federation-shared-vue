@@ -1,0 +1,3 @@
+natsort
+playwright
+# Make sure to run "playwright install" after the installation...
