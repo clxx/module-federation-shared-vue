@@ -81,11 +81,13 @@ async def serve(
             json.dumps(remote_package_json_data, indent=2) + "\n", "utf-8"
         )
 
-    host_shared_json = Path("layout", "shared.json")
-    host_shared_json.write_text(json.dumps(host_shared_hints, indent=2), "utf-8")
+    Path("layout", "shared.json").write_text(
+        json.dumps(host_shared_hints, indent=2), "utf-8"
+    )
 
-    remote_shared_json = Path("home", "shared.json")
-    remote_shared_json.write_text(json.dumps(remote_shared_hints, indent=2), "utf-8")
+    Path("home", "shared.json").write_text(
+        json.dumps(remote_shared_hints, indent=2), "utf-8"
+    )
 
     if needs_install:
         install = await asyncio.create_subprocess_exec(
@@ -160,7 +162,7 @@ async def serve(
     return result
 
 
-def runs(baseline):
+def runs():
     # "3.3.9" is the most recent Vue - this is deliberately not the latest version!
     newVersion = "^3.3.8"
     oldVersion = "^3.0.11"
@@ -181,96 +183,100 @@ def runs(baseline):
             oldVersion,
             oldVersion.lstrip("^"),
         ]:
-            if (not baseline and host_package_version == remote_package_version) or (
-                baseline
-                and (
-                    host_package_version != remote_package_version
-                    or host_package_version not in [newVersion, newVersion.lstrip("^")]
-                )
-            ):
-                continue
+            for baseline in [False, True]:
+                if (
+                    not baseline and host_package_version == remote_package_version
+                ) or (
+                    baseline
+                    and (
+                        host_package_version != remote_package_version
+                        or host_package_version
+                        not in [newVersion, newVersion.lstrip("^")]
+                    )
+                ):
+                    continue
 
-            for host_vue_shared, remote_vue_shared in [
-                (
-                    None,
-                    None,
-                ),
-                (
-                    {},
-                    {},
-                ),
-                # https://webpack.js.org/plugins/module-federation-plugin/#version
-                # "By default, webpack uses the version from the package.json file of the dependency."
-                # Therefore we do not set version here explicitly...
-                (
-                    {"requiredVersion": host_package_version},
-                    {"requiredVersion": remote_package_version},
-                ),
-            ]:
-                for is_strict_version in [None, False, True]:
-                    if is_strict_version is not None and (
-                        host_vue_shared is None
-                        or "requiredVersion" not in host_vue_shared
-                    ):
-                        continue
-
-                    for is_singleton in [None, True]:
-                        if is_singleton is not None and host_vue_shared is None:
+                for host_vue_shared, remote_vue_shared in [
+                    (
+                        None,
+                        None,
+                    ),
+                    (
+                        {},
+                        {},
+                    ),
+                    # https://webpack.js.org/plugins/module-federation-plugin/#version
+                    # "By default, webpack uses the version from the package.json file of the dependency."
+                    # Therefore we do not set version here explicitly...
+                    (
+                        {"requiredVersion": host_package_version},
+                        {"requiredVersion": remote_package_version},
+                    ),
+                ]:
+                    for is_strict_version in [None, False, True]:
+                        if is_strict_version is not None and (
+                            host_vue_shared is None
+                            or "requiredVersion" not in host_vue_shared
+                        ):
                             continue
 
-                        for is_import in [None, False]:
-                            if is_import is not None and host_vue_shared is None:
+                        for is_singleton in [None, True]:
+                            if is_singleton is not None and host_vue_shared is None:
                                 continue
 
-                            host_shared = (
-                                {
-                                    "vue": {
-                                        key: value
-                                        for key, value in (
-                                            host_vue_shared
-                                            | {
-                                                "strictVersion": is_strict_version,
-                                                "singleton": is_singleton,
-                                            }
-                                        ).items()
-                                        if value is not None
+                            for is_import in [None, False]:
+                                if is_import is not None and host_vue_shared is None:
+                                    continue
+
+                                host_shared = (
+                                    {
+                                        "vue": {
+                                            key: value
+                                            for key, value in (
+                                                host_vue_shared
+                                                | {
+                                                    "strictVersion": is_strict_version,
+                                                    "singleton": is_singleton,
+                                                }
+                                            ).items()
+                                            if value is not None
+                                        }
                                     }
-                                }
-                                if host_vue_shared is not None
-                                else {}
-                            )
+                                    if host_vue_shared is not None
+                                    else {}
+                                )
 
-                            remote_shared = (
-                                {
-                                    "vue": {
-                                        key: value
-                                        for key, value in (
-                                            remote_vue_shared
-                                            | {
-                                                "strictVersion": is_strict_version,
-                                                "singleton": is_singleton,
-                                                "import": is_import,
-                                            }
-                                        ).items()
-                                        if value is not None
+                                remote_shared = (
+                                    {
+                                        "vue": {
+                                            key: value
+                                            for key, value in (
+                                                remote_vue_shared
+                                                | {
+                                                    "strictVersion": is_strict_version,
+                                                    "singleton": is_singleton,
+                                                    "import": is_import,
+                                                }
+                                            ).items()
+                                            if value is not None
+                                        }
                                     }
-                                }
-                                if remote_vue_shared is not None
-                                else {}
-                            )
+                                    if remote_vue_shared is not None
+                                    else {}
+                                )
 
-                            args = [
-                                host_package_version,
-                                remote_package_version,
-                                host_shared,
-                                remote_shared,
-                            ]
+                                args = [
+                                    host_package_version,
+                                    remote_package_version,
+                                    host_shared,
+                                    remote_shared,
+                                ]
 
-                            args_json = json.dumps(args)
+                                args_json = json.dumps(args)
 
-                            if args_json not in runs_set:
-                                runs_set.add(args_json)
-                                runs_list.append(args)
+                                if args_json not in runs_set:
+                                    runs_set.add(args_json)
+                                    runs_list.append(args)
 
     return natsorted(runs_list, lambda args: f"{args[0]} {args[1]}")
 
@@ -289,12 +295,9 @@ def generate_hints_chooser(results):
         if messages:
             if list(messages.keys()) != ["warning"]:
                 raise Exception("Unknown message type!")
-            warnings = messages["warning"]
-            if len(warnings) != 1:
-                raise Exception("Not a single warning!")
-            warning = warnings[0]
+            warning = json.dumps(messages["warning"])
         else:
-            warning = ""
+            warning = json.dumps([])
         hints = hints_chooser_wizard["host"][host]["remote"][remote]["singleton"][
             singleton
         ]["warning"][warning]["hints"]
@@ -326,75 +329,65 @@ async def main():
         with open("info.log", "w", encoding="utf-8") as info_log, open(
             "warning.log", "w", encoding="utf-8"
         ) as warning_log:
-            for baseline in [False, True]:
-                results = []
+            results = []
 
-                old_install = None
+            old_install = None
 
-                sorted_runs = runs(baseline)
+            sorted_runs = runs()
 
-                count = 0
-                total = len(sorted_runs)
+            count = 0
+            total = len(sorted_runs)
 
-                for args in sorted_runs:
-                    count += 1
+            for args in sorted_runs:
+                count += 1
 
-                    log_description = f"{count:03}/{total:03}"
+                log_description = f"{count:03}/{total:03}"
 
-                    print(
-                        log_description,
-                        "baseline:",
-                        json.dumps(baseline),
-                        "|",
-                        "host package version:",
-                        args[0],
-                        "|",
-                        "remote package version:",
-                        args[1],
-                        "|",
-                        "host shared:",
-                        json.dumps(args[2]),
-                        "|",
-                        "remote shared:",
-                        json.dumps(args[3]),
-                        file=info_log,
-                    )
-
-                    result = await serve(
-                        *args,
-                        old_install != f"{args[0]} {args[1]}",
-                        log_description,
-                        info_log,
-                        warning_log,
-                    )
-
-                    old_install = f"{args[0]} {args[1]}"
-
-                    print(log_description, file=info_log)
-                    print(
-                        log_description,
-                        "scraped result:",
-                        json.dumps(result),
-                        file=info_log,
-                    )
-                    print(file=info_log)
-
-                    if result:
-                        results.append(result)
-
-                results_json = Path(
-                    "results_same_version.json"
-                    if baseline
-                    else "results_different_versions.json"
+                print(
+                    log_description,
+                    "host package version:",
+                    args[0],
+                    "|",
+                    "remote package version:",
+                    args[1],
+                    "|",
+                    "host shared:",
+                    json.dumps(args[2]),
+                    "|",
+                    "remote shared:",
+                    json.dumps(args[3]),
+                    file=info_log,
                 )
 
-                results_json_data = natsorted(results, json.dumps)
-
-                results_json.write_text(
-                    json.dumps(results_json_data, indent=2), "utf-8"
+                result = await serve(
+                    *args,
+                    old_install != f"{args[0]} {args[1]}",
+                    log_description,
+                    info_log,
+                    warning_log,
                 )
 
-                generate_hints_chooser(results_json_data)
+                old_install = f"{args[0]} {args[1]}"
+
+                print(log_description, file=info_log)
+                print(
+                    log_description,
+                    "scraped result:",
+                    json.dumps(result),
+                    file=info_log,
+                )
+                print(file=info_log)
+
+                if result:
+                    results.append(result)
+
+            results_json = Path("results.json")
+
+            results_json_data = natsorted(results, json.dumps)
+
+            results_json.write_text(json.dumps(results_json_data, indent=2), "utf-8")
+
+            generate_hints_chooser(results_json_data)
     except Exception as exception:
         print(log_description, exception)
     finally:
