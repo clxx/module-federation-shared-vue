@@ -48,7 +48,9 @@ async def serve(
     host_shared_hints,
     remote_shared_hints,
     needs_install,
-    log_file,
+    log_description,
+    info_log,
+    warnings_log,
 ):
     if needs_install:
         host_package_json = Path("layout", "package.json")
@@ -74,11 +76,9 @@ async def serve(
         )
 
     host_shared_json = Path("layout", "shared.json")
-    host_shared_json_text = host_shared_json.read_text("utf-8")
     host_shared_json.write_text(json.dumps(host_shared_hints, indent=2), "utf-8")
 
     remote_shared_json = Path("home", "shared.json")
-    remote_shared_json_text = remote_shared_json.read_text("utf-8")
     remote_shared_json.write_text(json.dumps(remote_shared_hints, indent=2), "utf-8")
 
     if needs_install:
@@ -101,7 +101,7 @@ async def serve(
 
     while not (host and remote and url):
         line = (await start.stdout.readline()).decode("utf-8").rstrip()
-        print(line, file=log_file)
+        print(log_description, line, file=info_log)
         if match := re.fullmatch(
             r"layout start: <i> \[webpack-dev-server\] Loopback: (.+)", line
         ):
@@ -134,6 +134,10 @@ async def serve(
             },
         }
     )
+    if not result:
+        print(
+            log_description, "Skipped result due to compile errors", file=warnings_log
+        )
     start.terminate()
     await start.wait()
     return result
@@ -271,7 +275,9 @@ async def main():
     remote_shared_json_bytes = remote_shared_json.read_bytes()
 
     try:
-        with open("run.log", "w", encoding="utf-8") as log_file:
+        with open("info.log", "w", encoding="utf-8") as info_log, open(
+            "warning.log", "w", encoding="utf-8"
+        ) as warning_log:
             for baseline in [True, False]:
                 results = []
 
@@ -285,8 +291,10 @@ async def main():
                 for args in sorted_runs:
                     count += 1
 
+                    log_description = f"{count:03}/{total:03}"
+
                     print(
-                        f"{count:03}/{total:03}",
+                        log_description,
                         "|",
                         "baseline:",
                         json.dumps(baseline),
@@ -302,24 +310,28 @@ async def main():
                         "|",
                         "remote shared:",
                         json.dumps(args[3]),
-                        file=log_file,
+                        file=info_log,
                     )
 
                     result = await serve(
-                        *args, old_install != f"{args[0]} {args[1]}", log_file
+                        *args,
+                        old_install != f"{args[0]} {args[1]}",
+                        log_description,
+                        info_log,
+                        warning_log,
                     )
 
                     old_install = f"{args[0]} {args[1]}"
 
-                    print(file=log_file)
+                    print(file=info_log)
                     print(
-                        f"{count:03}/{total:03}",
+                        log_description,
                         "|",
                         "scraped result:",
                         json.dumps(result),
-                        file=log_file,
+                        file=info_log,
                     )
-                    print(file=log_file)
+                    print(file=info_log)
 
                     if result:
                         results.append(result)
@@ -333,7 +345,7 @@ async def main():
                     json.dumps(natsorted(results, json.dumps), indent=2), "utf-8"
                 )
     except Exception as exception:
-        print(exception)
+        print(log_description, exception)
     finally:
         pnpm_lock_yaml.write_bytes(pnpm_lock_yaml_bytes)
         host_package_json.write_bytes(host_package_json_bytes)
