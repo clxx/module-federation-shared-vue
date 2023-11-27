@@ -315,7 +315,7 @@ async def main():
         with open("info.log", "w", encoding="utf-8") as info_log, open(
             "warning.log", "w", encoding="utf-8"
         ) as warning_log:
-            for baseline in [True, False]:
+            for baseline in [False, True]:
                 results = []
 
                 old_install = None
@@ -332,7 +332,6 @@ async def main():
 
                     print(
                         log_description,
-                        "|",
                         "baseline:",
                         json.dumps(baseline),
                         "|",
@@ -363,7 +362,6 @@ async def main():
                     print(log_description, file=info_log)
                     print(
                         log_description,
-                        "|",
                         "scraped result:",
                         json.dumps(result),
                         file=info_log,
