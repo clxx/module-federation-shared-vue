@@ -80,63 +80,60 @@ async def serve(
     remote_shared_json_text = remote_shared_json.read_text("utf-8")
     remote_shared_json.write_text(json.dumps(remote_shared_hints, indent=2), "utf-8")
 
-    try:
-        if needs_install:
-            install = await asyncio.create_subprocess_exec("pnpm", "install", cwd="..")
-            await install.wait()
+    if needs_install:
+        install = await asyncio.create_subprocess_exec("pnpm", "install", cwd="..")
+        await install.wait()
 
-        start = await asyncio.create_subprocess_exec(
-            "pnpm",
-            "start",
-            stdout=asyncio.subprocess.PIPE,
-            stderr=asyncio.subprocess.STDOUT,
-        )
+    start = await asyncio.create_subprocess_exec(
+        "pnpm",
+        "start",
+        stdout=asyncio.subprocess.PIPE,
+        stderr=asyncio.subprocess.STDOUT,
+    )
 
-        host = None
-        remote = None
-        url = None
-        warnings = False
+    host = None
+    remote = None
+    url = None
+    warnings = False
 
-        while not (host and remote and url):
-            line = (await start.stdout.readline()).decode("utf-8").rstrip()
-            print(line)
-            if match := re.fullmatch(
-                r"layout start: <i> \[webpack-dev-server\] Loopback: (.+)", line
-            ):
-                url = match.group(1)
-            elif match := re.fullmatch(
-                r"(home|layout) start: webpack \d+\.\d+\.\d+ compiled (successfully|with \d+ warnings) in \d+ ms",
-                line,
-            ):
-                if match.group(1) == "layout":
-                    host = True
-                elif match.group(1) == "home":
-                    remote = True
-                if match.group(2) != "successfully":
-                    warnings = True
+    while not (host and remote and url):
+        line = (await start.stdout.readline()).decode("utf-8").rstrip()
+        print(line)
+        if match := re.fullmatch(
+            r"layout start: <i> \[webpack-dev-server\] Loopback: (.+)", line
+        ):
+            url = match.group(1)
+        elif match := re.fullmatch(
+            r"(home|layout) start: webpack \d+\.\d+\.\d+ compiled (successfully|with \d+ warnings) in \d+ ms",
+            line,
+        ):
+            if match.group(1) == "layout":
+                host = True
+            elif match.group(1) == "home":
+                remote = True
+            if match.group(2) != "successfully":
+                warnings = True
 
-        result = (
-            None
-            if warnings
-            else {
-                "actual": await scrape(url),
-                "config": {
-                    "host": {
-                        "package": host_package_version,
-                        "shared": host_shared_hints,
-                    },
-                    "remote": {
-                        "package": remote_package_version,
-                        "shared": remote_shared_hints,
-                    },
+    result = (
+        None
+        if warnings
+        else {
+            "actual": await scrape(url),
+            "config": {
+                "host": {
+                    "package": host_package_version,
+                    "shared": host_shared_hints,
                 },
-            }
-        )
-        start.terminate()
-        await start.wait()
-        return result
-    except Exception as exception:
-        print(exception)
+                "remote": {
+                    "package": remote_package_version,
+                    "shared": remote_shared_hints,
+                },
+            },
+        }
+    )
+    start.terminate()
+    await start.wait()
+    return result
 
 
 def runs(baseline):
