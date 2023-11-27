@@ -49,30 +49,28 @@ async def serve(
     remote_shared_hints,
     needs_install,
 ):
-    pnpm_lock_yaml = Path("..", "pnpm-lock.yaml")
-    pnpm_lock_yaml_bytes = pnpm_lock_yaml.read_bytes()
+    if needs_install:
+        host_package_json = Path("layout", "package.json")
+        host_package_json_text = host_package_json.read_text("utf-8")
+        host_package_json_data = json.loads(host_package_json_text)
+        host_package_json_data["dependencies"]["vue"] = host_package_version
+        host_package_json_data["devDependencies"][
+            "@vue/compiler-sfc"
+        ] = host_package_version
+        host_package_json.write_text(
+            json.dumps(host_package_json_data, indent=2) + "\n", "utf-8"
+        )
 
-    host_package_json = Path("layout", "package.json")
-    host_package_json_text = host_package_json.read_text("utf-8")
-    host_package_json_data = json.loads(host_package_json_text)
-    host_package_json_data["dependencies"]["vue"] = host_package_version
-    host_package_json_data["devDependencies"][
-        "@vue/compiler-sfc"
-    ] = host_package_version
-    host_package_json.write_text(
-        json.dumps(host_package_json_data, indent=2) + "\n", "utf-8"
-    )
-
-    remote_package_json = Path("home", "package.json")
-    remote_package_json_text = remote_package_json.read_text("utf-8")
-    remote_package_json_data = json.loads(remote_package_json_text)
-    remote_package_json_data["dependencies"]["vue"] = remote_package_version
-    remote_package_json_data["devDependencies"][
-        "@vue/compiler-sfc"
-    ] = remote_package_version
-    remote_package_json.write_text(
-        json.dumps(remote_package_json_data, indent=2) + "\n", "utf-8"
-    )
+        remote_package_json = Path("home", "package.json")
+        remote_package_json_text = remote_package_json.read_text("utf-8")
+        remote_package_json_data = json.loads(remote_package_json_text)
+        remote_package_json_data["dependencies"]["vue"] = remote_package_version
+        remote_package_json_data["devDependencies"][
+            "@vue/compiler-sfc"
+        ] = remote_package_version
+        remote_package_json.write_text(
+            json.dumps(remote_package_json_data, indent=2) + "\n", "utf-8"
+        )
 
     host_shared_json = Path("layout", "shared.json")
     host_shared_json_text = host_shared_json.read_text("utf-8")
@@ -84,7 +82,7 @@ async def serve(
 
     try:
         if needs_install:
-            install = await asyncio.create_subprocess_exec("pnpm", "install")
+            install = await asyncio.create_subprocess_exec("pnpm", "install", cwd="..")
             await install.wait()
 
         start = await asyncio.create_subprocess_exec(
@@ -139,15 +137,9 @@ async def serve(
         return result
     except Exception as exception:
         print(exception)
-    finally:
-        pnpm_lock_yaml.write_bytes(pnpm_lock_yaml_bytes)
-        host_package_json.write_text(host_package_json_text, "utf-8")
-        remote_package_json.write_text(remote_package_json_text, "utf-8")
-        host_shared_json.write_text(host_shared_json_text, "utf-8")
-        remote_shared_json.write_text(remote_shared_json_text, "utf-8")
 
 
-async def run(baseline):
+def runs(baseline):
     newVersion = "^3.3.8"
     oldVersion = "^3.0.11"
 
@@ -258,47 +250,78 @@ async def run(baseline):
                                 runs_set.add(args_json)
                                 runs_list.append(args)
 
-    count = 0
+    return runs_list
 
-    old_install = None
 
-    results = []
+async def run(baseline):
+    pnpm_lock_yaml = Path("..", "pnpm-lock.yaml")
+    pnpm_lock_yaml_bytes = pnpm_lock_yaml.read_bytes()
 
-    for args in natsorted(runs_list, lambda args: f"{args[0]} {args[1]}"):
-        count += 1
+    host_package_json = Path("layout", "package.json")
+    host_package_json_bytes = host_package_json.read_bytes()
 
-        print(
-            f"{count:03}",
-            "|",
-            "host package version:",
-            args[0],
-            "|",
-            "remote package version:",
-            args[1],
-            "|",
-            "host shared:",
-            json.dumps(args[2]),
-            "|",
-            "remote shared:",
-            json.dumps(args[3]),
+    remote_package_json = Path("home", "package.json")
+    remote_package_json_bytes = remote_package_json.read_bytes()
+
+    host_shared_json = Path("layout", "shared.json")
+    host_shared_json_bytes = host_shared_json.read_bytes()
+
+    remote_shared_json = Path("home", "shared.json")
+    remote_shared_json_bytes = remote_shared_json.read_bytes()
+
+    try:
+        count = 0
+
+        old_install = None
+
+        results = []
+
+        for args in natsorted(runs(baseline), lambda args: f"{args[0]} {args[1]}"):
+            count += 1
+
+            print(
+                f"{count:03}",
+                "|",
+                "host package version:",
+                args[0],
+                "|",
+                "remote package version:",
+                args[1],
+                "|",
+                "host shared:",
+                json.dumps(args[2]),
+                "|",
+                "remote shared:",
+                json.dumps(args[3]),
+            )
+
+            result = await serve(*args, old_install != f"{args[0]} {args[1]}")
+
+            old_install = f"{args[0]} {args[1]}"
+
+            if result:
+                print()
+                print(f"{count:03}", "|", "scraped result:", json.dumps(result))
+                print()
+
+                results.append(result)
+
+        results_json = Path(
+            "results_same_version.json"
+            if baseline
+            else "results_different_versions.json"
         )
-
-        result = await serve(*args, old_install != f"{args[0]} {args[1]}")
-
-        old_install = f"{args[0]} {args[1]}"
-
-        if result:
-            print(f"{count:03}", "|", "scraped result:", json.dumps(result))
-            print()
-
-            results.append(result)
-
-    results_json = Path(
-        "results_same_version.json" if baseline else "results_different_versions.json"
-    )
-    results_json.write_text(
-        json.dumps(natsorted(results, json.dumps), indent=2), "utf-8"
-    )
+        results_json.write_text(
+            json.dumps(natsorted(results, json.dumps), indent=2), "utf-8"
+        )
+    except Exception as exception:
+        print(exception)
+    finally:
+        pnpm_lock_yaml.write_bytes(pnpm_lock_yaml_bytes)
+        host_package_json.write_bytes(host_package_json_bytes)
+        remote_package_json.write_bytes(remote_package_json_bytes)
+        host_shared_json.write_bytes(host_shared_json_bytes)
+        remote_shared_json.write_bytes(remote_shared_json_bytes)
 
 
 async def main():
