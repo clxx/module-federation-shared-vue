@@ -3,9 +3,15 @@ import json
 import re
 
 from collections import defaultdict
-from natsort import natsorted
+from natsort import natsorted, natsort_keygen
 from pathlib import Path
 from playwright.async_api import expect, async_playwright
+
+
+class NestedDict(dict):
+    def __missing__(self, key):
+        self[key] = [] if key == "hints" else NestedDict()
+        return self[key]
 
 
 # https://github.com/microsoft/playwright-python
@@ -258,6 +264,37 @@ def runs(baseline):
     return natsorted(runs_list, lambda args: f"{args[0]} {args[1]}")
 
 
+def generate_hints_chooser(results):
+    natsort_key = natsort_keygen()
+
+    hints_chooser_wizard = NestedDict()
+
+    for result in results:
+        host = result["actual"]["host"]
+        remote = result["actual"]["remote"] or ""
+        value = result["actual"]["singleton"]
+        singleton = json.dumps(value) if value else ""
+        messages = result["actual"]["messages"]
+        if messages:
+            if list(messages.keys()) != ["warning"]:
+                raise Exception("Unknown message type!")
+            warnings = messages["warning"]
+            if len(warnings) != 1:
+                raise Exception("Not a single warning!")
+            warning = warnings[0]
+        else:
+            warning = ""
+        hints = hints_chooser_wizard["host"][host]["remote"][remote]["singleton"][
+            singleton
+        ]["warning"][warning]["hints"]
+        hints.append(result["config"])
+        hints.sort(key=lambda hint: natsort_key(json.dumps(hint)))
+
+    Path("hints_chooser_wizard.json").write_text(
+        json.dumps(hints_chooser_wizard, indent=2, sort_keys=True), "utf-8"
+    )
+
+
 async def main():
     pnpm_lock_yaml = Path("..", "pnpm-lock.yaml")
     pnpm_lock_yaml_bytes = pnpm_lock_yaml.read_bytes()
@@ -341,9 +378,14 @@ async def main():
                     if baseline
                     else "results_different_versions.json"
                 )
+
+                results_json_data = natsorted(results, json.dumps)
+
                 results_json.write_text(
-                    json.dumps(natsorted(results, json.dumps), indent=2), "utf-8"
+                    json.dumps(results_json_data, indent=2), "utf-8"
                 )
+
+                generate_hints_chooser(results_json_data)
     except Exception as exception:
         print(log_description, exception)
     finally:
