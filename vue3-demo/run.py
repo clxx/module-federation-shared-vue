@@ -48,6 +48,7 @@ async def serve(
     host_shared_hints,
     remote_shared_hints,
     needs_install,
+    log_file,
 ):
     if needs_install:
         host_package_json = Path("layout", "package.json")
@@ -81,7 +82,9 @@ async def serve(
     remote_shared_json.write_text(json.dumps(remote_shared_hints, indent=2), "utf-8")
 
     if needs_install:
-        install = await asyncio.create_subprocess_exec("pnpm", "install", cwd="..")
+        install = await asyncio.create_subprocess_exec(
+            "pnpm", "install", stdout=asyncio.subprocess.DEVNULL, cwd=".."
+        )
         await install.wait()
 
     start = await asyncio.create_subprocess_exec(
@@ -98,7 +101,7 @@ async def serve(
 
     while not (host and remote and url):
         line = (await start.stdout.readline()).decode("utf-8").rstrip()
-        print(line)
+        print(line, file=log_file)
         if match := re.fullmatch(
             r"layout start: <i> \[webpack-dev-server\] Loopback: (.+)", line
         ):
@@ -268,59 +271,67 @@ async def main():
     remote_shared_json_bytes = remote_shared_json.read_bytes()
 
     try:
-        for baseline in [True, False]:
-            results = []
+        with open("run.log", "w", encoding="utf-8") as log_file:
+            for baseline in [True, False]:
+                results = []
 
-            old_install = None
+                old_install = None
 
-            sorted_runs = runs(baseline)
+                sorted_runs = runs(baseline)
 
-            count = 0
-            total = len(sorted_runs)
+                count = 0
+                total = len(sorted_runs)
 
-            for args in sorted_runs:
-                count += 1
+                for args in sorted_runs:
+                    count += 1
 
-                print(
-                    f"{count:03}/{total:03}",
-                    "|",
-                    "baseline:",
-                    json.dumps(baseline),
-                    "|",
-                    "host package version:",
-                    args[0],
-                    "|",
-                    "remote package version:",
-                    args[1],
-                    "|",
-                    "host shared:",
-                    json.dumps(args[2]),
-                    "|",
-                    "remote shared:",
-                    json.dumps(args[3]),
+                    print(
+                        f"{count:03}/{total:03}",
+                        "|",
+                        "baseline:",
+                        json.dumps(baseline),
+                        "|",
+                        "host package version:",
+                        args[0],
+                        "|",
+                        "remote package version:",
+                        args[1],
+                        "|",
+                        "host shared:",
+                        json.dumps(args[2]),
+                        "|",
+                        "remote shared:",
+                        json.dumps(args[3]),
+                        file=log_file,
+                    )
+
+                    result = await serve(
+                        *args, old_install != f"{args[0]} {args[1]}", log_file
+                    )
+
+                    old_install = f"{args[0]} {args[1]}"
+
+                    print(file=log_file)
+                    print(
+                        f"{count:03}/{total:03}",
+                        "|",
+                        "scraped result:",
+                        json.dumps(result),
+                        file=log_file,
+                    )
+                    print(file=log_file)
+
+                    if result:
+                        results.append(result)
+
+                results_json = Path(
+                    "results_same_version.json"
+                    if baseline
+                    else "results_different_versions.json"
                 )
-
-                result = await serve(*args, old_install != f"{args[0]} {args[1]}")
-
-                old_install = f"{args[0]} {args[1]}"
-
-                print()
-                print(
-                    f"{count:03}/{total:03}", "|", "scraped result:", json.dumps(result)
+                results_json.write_text(
+                    json.dumps(natsorted(results, json.dumps), indent=2), "utf-8"
                 )
-                print()
-
-                if result:
-                    results.append(result)
-
-            results_json = Path(
-                "results_same_version.json"
-                if baseline
-                else "results_different_versions.json"
-            )
-            results_json.write_text(
-                json.dumps(natsorted(results, json.dumps), indent=2), "utf-8"
-            )
     except Exception as exception:
         print(exception)
     finally:
