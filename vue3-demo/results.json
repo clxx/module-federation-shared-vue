@@ -1,0 +1,6562 @@
+[
+  {
+    "actual": {
+      "messages": {
+        "warning": [
+          "No satisfying version (=3.0.11) of shared module vue found in shared scope default.\nAvailable versions: 3.3.8 from vue3-demo_layout"
+        ]
+      },
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": false
+          }
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": false,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {
+        "warning": [
+          "No satisfying version (=3.0.11) of shared module vue found in shared scope default.\nAvailable versions: 3.3.8 from vue3-demo_layout"
+        ]
+      },
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8"
+          }
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {
+        "warning": [
+          "No satisfying version (=3.0.11) of shared module vue found in shared scope default.\nAvailable versions: 3.3.8 from vue3-demo_layout"
+        ]
+      },
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {}
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {
+        "warning": [
+          "No satisfying version (=3.0.11) of shared module vue found in shared scope default.\nAvailable versions: 3.3.8 from vue3-demo_layout"
+        ]
+      },
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": false
+          }
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": false,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {
+        "warning": [
+          "No satisfying version (=3.0.11) of shared module vue found in shared scope default.\nAvailable versions: 3.3.8 from vue3-demo_layout"
+        ]
+      },
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8"
+          }
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {
+        "warning": [
+          "No satisfying version (=3.0.11) of shared module vue found in shared scope default.\nAvailable versions: 3.3.8 from vue3-demo_layout"
+        ]
+      },
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {}
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {
+        "warning": [
+          "Unsatisfied version 3.3.8 from vue3-demo_home of shared singleton module vue (required =3.0.11)"
+        ]
+      },
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {
+        "warning": [
+          "Unsatisfied version 3.3.8 from vue3-demo_home of shared singleton module vue (required =3.0.11)"
+        ]
+      },
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": false,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": false,
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {
+        "warning": [
+          "Unsatisfied version 3.3.8 from vue3-demo_home of shared singleton module vue (required =3.0.11)"
+        ]
+      },
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {
+        "warning": [
+          "Unsatisfied version 3.3.8 from vue3-demo_layout of shared singleton module vue (required =3.0.11)"
+        ]
+      },
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {
+        "warning": [
+          "Unsatisfied version 3.3.8 from vue3-demo_layout of shared singleton module vue (required =3.0.11)"
+        ]
+      },
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {
+        "warning": [
+          "Unsatisfied version 3.3.8 from vue3-demo_layout of shared singleton module vue (required =3.0.11)"
+        ]
+      },
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": false,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": false,
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {
+        "warning": [
+          "Unsatisfied version 3.3.8 from vue3-demo_layout of shared singleton module vue (required =3.0.11)"
+        ]
+      },
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": false,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": false,
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {
+        "warning": [
+          "Unsatisfied version 3.3.8 from vue3-demo_layout of shared singleton module vue (required =3.0.11)"
+        ]
+      },
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {
+        "warning": [
+          "Unsatisfied version 3.3.8 from vue3-demo_layout of shared singleton module vue (required =3.0.11)"
+        ]
+      },
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {
+        "warning": [
+          "Unsatisfied version 3.3.8 from vue3-demo_layout of shared singleton module vue (required =3.0.11)"
+        ]
+      },
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {
+        "warning": [
+          "Unsatisfied version 3.3.8 from vue3-demo_layout of shared singleton module vue (required =3.0.11)"
+        ]
+      },
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {
+        "warning": [
+          "Unsatisfied version 3.3.8 from vue3-demo_layout of shared singleton module vue (required =3.0.11)"
+        ]
+      },
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": false,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": false,
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {
+        "warning": [
+          "Unsatisfied version 3.3.8 from vue3-demo_layout of shared singleton module vue (required =3.0.11)"
+        ]
+      },
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": false,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": false,
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {
+        "warning": [
+          "Unsatisfied version 3.3.8 from vue3-demo_layout of shared singleton module vue (required =3.0.11)"
+        ]
+      },
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {
+        "warning": [
+          "Unsatisfied version 3.3.8 from vue3-demo_layout of shared singleton module vue (required =3.0.11)"
+        ]
+      },
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {
+        "warning": [
+          "Unsatisfied version 3.3.9 from vue3-demo_home of shared singleton module vue (required =3.0.11)"
+        ]
+      },
+      "host": "3.3.9",
+      "remote": "3.3.9",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {
+        "warning": [
+          "Unsatisfied version 3.3.9 from vue3-demo_home of shared singleton module vue (required =3.0.11)"
+        ]
+      },
+      "host": "3.3.9",
+      "remote": "3.3.9",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": false,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": false,
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {
+        "warning": [
+          "Unsatisfied version 3.3.9 from vue3-demo_home of shared singleton module vue (required =3.0.11)"
+        ]
+      },
+      "host": "3.3.9",
+      "remote": "3.3.9",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {
+        "warning": [
+          "[Vue warn]: Invalid VNode type: Symbol(Fragment) (symbol) \n  at <Content> \n  at <AsyncComponentWrapper> \n  at <Layout>"
+        ]
+      },
+      "host": "3.0.11",
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {}
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {}
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {
+        "warning": [
+          "[Vue warn]: Invalid VNode type: Symbol(Fragment) (symbol) \n  at <Content> \n  at <AsyncComponentWrapper> \n  at <Layout>"
+        ]
+      },
+      "host": "3.0.11",
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {}
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {}
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {
+        "warning": [
+          "[Vue warn]: Invalid VNode type: Symbol(Fragment) (symbol) \n  at <Content> \n  at <AsyncComponentWrapper> \n  at <Layout>"
+        ]
+      },
+      "host": "3.3.8",
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": false
+          }
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {
+        "warning": [
+          "[Vue warn]: Invalid VNode type: Symbol(Fragment) (symbol) \n  at <Content> \n  at <AsyncComponentWrapper> \n  at <Layout>"
+        ]
+      },
+      "host": "3.3.8",
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {
+        "warning": [
+          "[Vue warn]: Invalid VNode type: Symbol(Fragment) (symbol) \n  at <Content> \n  at <AsyncComponentWrapper> \n  at <Layout>"
+        ]
+      },
+      "host": "3.3.8",
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8"
+          }
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11"
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {
+        "warning": [
+          "[Vue warn]: Invalid VNode type: Symbol(Fragment) (symbol) \n  at <Content> \n  at <AsyncComponentWrapper> \n  at <Layout>"
+        ]
+      },
+      "host": "3.3.8",
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {}
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {}
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {
+        "warning": [
+          "[Vue warn]: Invalid VNode type: Symbol(Fragment) (symbol) \n  at <Content> \n  at <AsyncComponentWrapper> \n  at <Layout>"
+        ]
+      },
+      "host": "3.3.8",
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {}
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {}
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {
+        "warning": [
+          "[Vue warn]: Unhandled error during execution of async component loader \n  at <AsyncComponentWrapper> \n  at <Layout>"
+        ]
+      },
+      "host": "3.3.8",
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": true,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": true,
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {
+        "warning": [
+          "[Vue warn]: Unhandled error during execution of async component loader \n  at <AsyncComponentWrapper> \n  at <Layout>"
+        ]
+      },
+      "host": "3.3.8",
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": true,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": true,
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {
+        "warning": [
+          "[Vue warn]: Unhandled error during execution of async component loader \n  at <AsyncComponentWrapper> \n  at <Layout>"
+        ]
+      },
+      "host": "3.3.8",
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {
+        "warning": [
+          "[Vue warn]: Unhandled error during execution of async component loader \n  at <AsyncComponentWrapper> \n  at <Layout>"
+        ]
+      },
+      "host": "3.3.8",
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": true,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": true,
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {
+        "warning": [
+          "[Vue warn]: Unhandled error during execution of async component loader \n  at <AsyncComponentWrapper> \n  at <Layout>"
+        ]
+      },
+      "host": "3.3.8",
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": true,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": true,
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {
+        "warning": [
+          "[Vue warn]: Unhandled error during execution of async component loader \n  at <AsyncComponentWrapper> \n  at <Layout>"
+        ]
+      },
+      "host": "3.3.8",
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {
+        "warning": [
+          "[Vue warn]: Unhandled error during execution of render function \n  at <Content> \n  at <AsyncComponentWrapper> \n  at <Layout>",
+          "[Vue warn]: Unhandled error during execution of scheduler flush. This is likely a Vue internals bug. Please open an issue at https://new-issue.vuejs.org/?repo=vuejs/core \n  at <Content> \n  at <AsyncComponentWrapper> \n  at <Layout>"
+        ]
+      },
+      "host": "3.3.8",
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": false
+          }
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {
+        "warning": [
+          "[Vue warn]: Unhandled error during execution of render function \n  at <Content> \n  at <AsyncComponentWrapper> \n  at <Layout>",
+          "[Vue warn]: Unhandled error during execution of scheduler flush. This is likely a Vue internals bug. Please open an issue at https://new-issue.vuejs.org/?repo=vuejs/core \n  at <Content> \n  at <AsyncComponentWrapper> \n  at <Layout>"
+        ]
+      },
+      "host": "3.3.8",
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {
+        "warning": [
+          "[Vue warn]: Unhandled error during execution of render function \n  at <Content> \n  at <AsyncComponentWrapper> \n  at <Layout>",
+          "[Vue warn]: Unhandled error during execution of scheduler flush. This is likely a Vue internals bug. Please open an issue at https://new-issue.vuejs.org/?repo=vuejs/core \n  at <Content> \n  at <AsyncComponentWrapper> \n  at <Layout>"
+        ]
+      },
+      "host": "3.3.8",
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8"
+          }
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11"
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {
+        "warning": [
+          "[Vue warn]: Unhandled error during execution of render function \n  at <Content> \n  at <AsyncComponentWrapper> \n  at <Layout>",
+          "[Vue warn]: Unhandled error during execution of scheduler flush. This is likely a Vue internals bug. Please open an issue at https://new-issue.vuejs.org/?repo=vuejs/core \n  at <Content> \n  at <AsyncComponentWrapper> \n  at <Layout>"
+        ]
+      },
+      "host": "3.3.8",
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {}
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {}
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.0.11",
+      "remote": "3.0.11",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.0.11",
+      "remote": "3.0.11",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.0.11",
+      "remote": "3.0.11",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": false,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": false,
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.0.11",
+      "remote": "3.0.11",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": false,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": false,
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.0.11",
+      "remote": "3.0.11",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": false
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": false,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.0.11",
+      "remote": "3.0.11",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": false
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.0.11",
+      "remote": "3.0.11",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": true,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": true,
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.0.11",
+      "remote": "3.0.11",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": true,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": true,
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.0.11",
+      "remote": "3.0.11",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.0.11",
+      "remote": "3.0.11",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.0.11",
+      "remote": "3.0.11",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11"
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.0.11",
+      "remote": "3.0.11",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11"
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11"
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.0.11",
+      "remote": "3.0.11",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.0.11",
+      "remote": "3.0.11",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.0.11",
+      "remote": "3.0.11",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {}
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.0.11",
+      "remote": "3.0.11",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {}
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {}
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.0.11",
+      "remote": "3.0.11",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.0.11",
+      "remote": "3.0.11",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.0.11",
+      "remote": "3.0.11",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": false,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": false,
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.0.11",
+      "remote": "3.0.11",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": false,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": false,
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.0.11",
+      "remote": "3.0.11",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": false
+          }
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": false,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.0.11",
+      "remote": "3.0.11",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": false
+          }
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.0.11",
+      "remote": "3.0.11",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": true,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": true,
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.0.11",
+      "remote": "3.0.11",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": true,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": true,
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.0.11",
+      "remote": "3.0.11",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.0.11",
+      "remote": "3.0.11",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.0.11",
+      "remote": "3.0.11",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11"
+          }
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.0.11",
+      "remote": "3.0.11",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11"
+          }
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11"
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.0.11",
+      "remote": "3.0.11",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.0.11",
+      "remote": "3.0.11",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.0.11",
+      "remote": "3.0.11",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {}
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.0.11",
+      "remote": "3.0.11",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {}
+        }
+      },
+      "remote": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {}
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": false
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {}
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {}
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": false
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {}
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {}
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": false
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {}
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {}
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": false
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {}
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {}
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": false
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {}
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {}
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": false
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {}
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {}
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": false,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": false,
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": false,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": false,
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": false,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": false,
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": false,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": false,
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": false,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": false,
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": false,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": false,
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": false
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": false,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": false
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": false
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": false,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": false
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": false
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": false,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": false
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": true,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": true,
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": true,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": true,
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": true,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": true,
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": true,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": true,
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": true,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": true,
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": true,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": true,
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8"
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8"
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8"
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8"
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8"
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11"
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8"
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8"
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8"
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {}
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {}
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {}
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {}
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {}
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {}
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {}
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {}
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {}
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": false,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": false,
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": false,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": false,
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": false
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": false
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": true,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": true,
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": true,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": true,
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11"
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8"
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11"
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8"
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {}
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {}
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {}
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {}
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": false,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": false,
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": false,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": false,
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": false,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": false,
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": false,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": false,
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": false,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": false,
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": false,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": false,
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": false
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": false,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": false
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": false
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": false,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": false
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": false
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": false,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": false
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": true,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": true,
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": true,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": true,
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": true,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": true,
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": true,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": true,
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": true,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": true,
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": true,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": true,
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8"
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8"
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8"
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8"
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8"
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11"
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8"
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8"
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8"
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {}
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {}
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {}
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {}
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {}
+        }
+      },
+      "remote": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {}
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {}
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": "3.3.8",
+      "remote": "3.3.8",
+      "singleton": true
+    },
+    "config": {
+      "host": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {}
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {}
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": null,
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": null,
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": null,
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": false,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": false,
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": null,
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": false,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": false,
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": null,
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": false
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": false,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": null,
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": false
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": null,
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": false
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": false,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": null,
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": false
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": null,
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": true,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": true,
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": null,
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": true,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": true,
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": null,
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": true,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": true,
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": null,
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": true,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": true,
+            "singleton": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": null,
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": null,
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": null,
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": null,
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11",
+            "strictVersion": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": true
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": null,
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11"
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": null,
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11"
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8"
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": null,
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11"
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": null,
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.0.11"
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8"
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": null,
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": null,
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": null,
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {}
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": null,
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {}
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {}
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": null,
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {}
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": null,
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "3.0.11",
+        "shared": {
+          "vue": {}
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {}
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": null,
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": null,
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": null,
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": false,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": false,
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": null,
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": false,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": false,
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": null,
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": false
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": false,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": null,
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": false
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": false,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": null,
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": true,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": true,
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": null,
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": true,
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": true,
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": null,
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "strictVersion": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": null,
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11",
+            "strictVersion": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "strictVersion": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": null,
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11"
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "3.3.8",
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": null,
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.0.11"
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "requiredVersion": "^3.3.8",
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": null,
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": null,
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {
+            "singleton": true
+          }
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "singleton": true,
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": null,
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {}
+        }
+      },
+      "remote": {
+        "package": "3.3.8",
+        "shared": {
+          "vue": {
+            "import": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "actual": {
+      "messages": {},
+      "host": null,
+      "remote": null,
+      "singleton": null
+    },
+    "config": {
+      "host": {
+        "package": "^3.0.11",
+        "shared": {
+          "vue": {}
+        }
+      },
+      "remote": {
+        "package": "^3.3.8",
+        "shared": {
+          "vue": {
+            "import": false
+          }
+        }
+      }
+    }
+  }
+]
