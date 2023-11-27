@@ -1,6 +1,5 @@
 {
-  "vue": {
-    "requiredVersion": "^3.3.8",
-    "strictVersion": true
-  }
+    "vue": {
+        "singleton": true
+    }
 }
