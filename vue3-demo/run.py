@@ -140,12 +140,23 @@ async def serve(
             },
         }
     )
+
+    start.terminate()
+
+    await start.wait()
+
+    while not start.stdout.at_eof():
+        line = (await start.stdout.readline()).decode("utf-8").rstrip()
+        print(log_description, line, file=info_log)
+
     if not result:
         print(
-            log_description, "Skipped result due to compile errors", file=warnings_log
+            log_description,
+            "Skipped result due to compile errors",
+            file=warnings_log,
+            flush=True,
         )
-    start.terminate()
-    await start.wait()
+
     return result
 
 
