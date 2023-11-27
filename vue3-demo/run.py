@@ -360,7 +360,7 @@ async def main():
 
                     old_install = f"{args[0]} {args[1]}"
 
-                    print(file=info_log)
+                    print(log_description, file=info_log)
                     print(
                         log_description,
                         "|",
