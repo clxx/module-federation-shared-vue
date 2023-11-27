@@ -247,10 +247,10 @@ def runs(baseline):
                                 runs_set.add(args_json)
                                 runs_list.append(args)
 
-    return runs_list
+    return natsorted(runs_list, lambda args: f"{args[0]} {args[1]}")
 
 
-async def run(baseline):
+async def main():
     pnpm_lock_yaml = Path("..", "pnpm-lock.yaml")
     pnpm_lock_yaml_bytes = pnpm_lock_yaml.read_bytes()
 
@@ -267,50 +267,59 @@ async def run(baseline):
     remote_shared_json_bytes = remote_shared_json.read_bytes()
 
     try:
-        count = 0
+        for baseline in [True, False]:
+            results = []
 
-        old_install = None
+            old_install = None
 
-        results = []
+            sorted_runs = runs(baseline)
 
-        for args in natsorted(runs(baseline), lambda args: f"{args[0]} {args[1]}"):
-            count += 1
+            count = 0
+            total = len(sorted_runs)
 
-            print(
-                f"{count:03}",
-                "|",
-                "host package version:",
-                args[0],
-                "|",
-                "remote package version:",
-                args[1],
-                "|",
-                "host shared:",
-                json.dumps(args[2]),
-                "|",
-                "remote shared:",
-                json.dumps(args[3]),
+            for args in sorted_runs:
+                count += 1
+
+                print(
+                    f"{count:03}/{total:03}",
+                    "|",
+                    "baseline:",
+                    json.dumps(baseline),
+                    "|",
+                    "host package version:",
+                    args[0],
+                    "|",
+                    "remote package version:",
+                    args[1],
+                    "|",
+                    "host shared:",
+                    json.dumps(args[2]),
+                    "|",
+                    "remote shared:",
+                    json.dumps(args[3]),
+                )
+
+                result = await serve(*args, old_install != f"{args[0]} {args[1]}")
+
+                old_install = f"{args[0]} {args[1]}"
+
+                print()
+                print(
+                    f"{count:03}/{total:03}", "|", "scraped result:", json.dumps(result)
+                )
+                print()
+
+                if result:
+                    results.append(result)
+
+            results_json = Path(
+                "results_same_version.json"
+                if baseline
+                else "results_different_versions.json"
             )
-
-            result = await serve(*args, old_install != f"{args[0]} {args[1]}")
-
-            old_install = f"{args[0]} {args[1]}"
-
-            if result:
-                print()
-                print(f"{count:03}", "|", "scraped result:", json.dumps(result))
-                print()
-
-                results.append(result)
-
-        results_json = Path(
-            "results_same_version.json"
-            if baseline
-            else "results_different_versions.json"
-        )
-        results_json.write_text(
-            json.dumps(natsorted(results, json.dumps), indent=2), "utf-8"
-        )
+            results_json.write_text(
+                json.dumps(natsorted(results, json.dumps), indent=2), "utf-8"
+            )
     except Exception as exception:
         print(exception)
     finally:
@@ -319,11 +328,6 @@ async def run(baseline):
         remote_package_json.write_bytes(remote_package_json_bytes)
         host_shared_json.write_bytes(host_shared_json_bytes)
         remote_shared_json.write_bytes(remote_shared_json_bytes)
-
-
-async def main():
-    await run(False)
-    await run(True)
 
 
 asyncio.run(main())
