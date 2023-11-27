@@ -325,10 +325,10 @@ async def main():
     remote_shared_json = Path("home", "shared.json")
     remote_shared_json_bytes = remote_shared_json.read_bytes()
 
-    try:
-        with open("info.log", "w", encoding="utf-8") as info_log, open(
-            "warning.log", "w", encoding="utf-8"
-        ) as warning_log:
+    with open("info.log", "w", encoding="utf-8") as info_log, open(
+        "warning.log", "w", encoding="utf-8"
+    ) as warning_log, open("error.log", "w", encoding="utf-8") as error_log:
+        try:
             results = []
 
             old_install = None
@@ -386,14 +386,14 @@ async def main():
             results_json_data = natsorted(results, json.dumps)
 
             results_json.write_text(json.dumps(results_json_data, indent=2), "utf-8")
-    except Exception as exception:
-        print(log_description, exception)
-    finally:
-        pnpm_lock_yaml.write_bytes(pnpm_lock_yaml_bytes)
-        host_package_json.write_bytes(host_package_json_bytes)
-        remote_package_json.write_bytes(remote_package_json_bytes)
-        host_shared_json.write_bytes(host_shared_json_bytes)
-        remote_shared_json.write_bytes(remote_shared_json_bytes)
+        except Exception as exception:
+            print(log_description, exception, file=error_log, flush=True)
+        finally:
+            pnpm_lock_yaml.write_bytes(pnpm_lock_yaml_bytes)
+            host_package_json.write_bytes(host_package_json_bytes)
+            remote_package_json.write_bytes(remote_package_json_bytes)
+            host_shared_json.write_bytes(host_shared_json_bytes)
+            remote_shared_json.write_bytes(remote_shared_json_bytes)
 
     generate_hints_chooser(results_json_data)
 
