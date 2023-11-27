@@ -287,7 +287,7 @@ def generate_hints_chooser(results):
     hints_chooser_wizard = NestedDict()
 
     for result in results:
-        host = result["actual"]["host"]
+        host = result["actual"]["host"] or ""
         remote = result["actual"]["remote"] or ""
         value = result["actual"]["singleton"]
         singleton = json.dumps(value) if value else ""
@@ -386,8 +386,6 @@ async def main():
             results_json_data = natsorted(results, json.dumps)
 
             results_json.write_text(json.dumps(results_json_data, indent=2), "utf-8")
-
-            generate_hints_chooser(results_json_data)
     except Exception as exception:
         print(log_description, exception)
     finally:
@@ -396,6 +394,8 @@ async def main():
         remote_package_json.write_bytes(remote_package_json_bytes)
         host_shared_json.write_bytes(host_shared_json_bytes)
         remote_shared_json.write_bytes(remote_shared_json_bytes)
+
+    generate_hints_chooser(results_json_data)
 
 
 asyncio.run(main())
