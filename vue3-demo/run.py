@@ -137,6 +137,7 @@ async def serve(
 
 
 def runs(baseline):
+    # "3.3.9" is the most recent Vue - this is deliberately not the latest version!
     newVersion = "^3.3.8"
     oldVersion = "^3.0.11"
 
